@@ -1,0 +1,33 @@
+c:\Windows\System32>netsh interface ipv4 show subinterfaces
+
+   MTU  Состояние определения носителя   Вх. байт  Исх. байт  Интерфейс
+------  ---------------  ---------  ---------  -------------
+4294967295                1          0     839300  Loopback Pseudo-Interface 1
+  1500                5          0          0  Ethernet
+  1290                1        364       2579  Ethernet 3
+  1500                1  7815465458  718764734  Беспроводная сеть 3
+  1500                5          0          0  Подключение по локальной сети* 14
+  1500                5          0          0  Подключение по локальной сети* 15
+  1500                1          0    1778813  vEthernet (Default Switch)
+  1500                1          0    2716073  Ethernet 6
+  1500                1       3936     197900  VMware Network Adapter VMnet1
+  1500                1       3936     197110  VMware Network Adapter VMnet8
+
+
+netsh int ipv4 set subinterface "Ethernet 3" mtu=1500 store=persistent
+
+
+c:\Windows\System32>netsh interface ipv4 show subinterfaces
+
+   MTU  Состояние определения носителя   Вх. байт  Исх. байт  Интерфейс
+------  ---------------  ---------  ---------  -------------
+4294967295                1          0     839300  Loopback Pseudo-Interface 1
+  1500                5          0          0  Ethernet
+  1500                1        364       2579  Ethernet 3
+  1500                1  7815465458  718764734  Беспроводная сеть 3
+  1500                5          0          0  Подключение по локальной сети* 14
+  1500                5          0          0  Подключение по локальной сети* 15
+  1500                1          0    1778813  vEthernet (Default Switch)
+  1500                1          0    2716073  Ethernet 6
+  1500                1       3936     197900  VMware Network Adapter VMnet1
+  1500                1       3936     197110  VMware Network Adapter VMnet8

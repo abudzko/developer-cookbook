@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>maven-cookbook</artifactId>
+        <groupId>com.budzko</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>maven-enforcer-plugin-project</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.budzko</groupId>
+            <artifactId>maven-dependency1</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <!--            <exclusions>-->
+            <!--                <exclusion>-->
+            <!--                    <groupId>javax.mail</groupId>-->
+            <!--                    <artifactId>mailapi</artifactId>-->
+            <!--                </exclusion>-->
+            <!--            </exclusions>-->
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                    <execution>
+                        <id>enforce-ban-duplicate-classes</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <rules>
+                        <banDuplicateClasses>
+                            <!--                            <dependencies>-->
+                            <!--                                <dependency>-->
+                            <!--                                    <groupId>com.budzko</groupId>-->
+                            <!--                                    <artifactId>maven-dependency1</artifactId>-->
+                            <!--                                    <ignoreClasses>-->
+                            <!--                                        <ignoreClass>*</ignoreClass>-->
+                            <!--                                    </ignoreClasses>-->
+                            <!--                                </dependency>-->
+                            <!--                            </dependencies>-->
+                            <!--                            <scopes>-->
+                            <!--                                <scope>compile</scope>-->
+                            <!--                                <scope>provided</scope>-->
+                            <!--                            </scopes>-->
+                            <findAllDuplicates>true</findAllDuplicates>
+                            <ignoreWhenIdentical>false</ignoreWhenIdentical>
+                        </banDuplicateClasses>
+                    </rules>
+                    <fail>true</fail>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>extra-enforcer-rules</artifactId>
+                        <version>1.3</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+
+            <!--            <plugin>-->
+            <!--                <groupId>org.basepom.maven</groupId>-->
+            <!--                <artifactId>duplicate-finder-maven-plugin</artifactId>-->
+            <!--                <version>1.5.0</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>default</id>-->
+            <!--                        <phase>verify</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--                <configuration>-->
+            <!--                    <skip>true</skip>-->
+            <!--                    <quiet>false</quiet>-->
+            <!--                    <checkCompileClasspath>true</checkCompileClasspath>-->
+            <!--                    <checkRuntimeClasspath>true</checkRuntimeClasspath>-->
+            <!--                    <checkTestClasspath>true</checkTestClasspath>-->
+            <!--                    <failBuildInCaseOfDifferentContentConflict>true</failBuildInCaseOfDifferentContentConflict>-->
+            <!--                    <failBuildInCaseOfEqualContentConflict>true</failBuildInCaseOfEqualContentConflict>-->
+            <!--                    <failBuildInCaseOfConflict>false</failBuildInCaseOfConflict>-->
+            <!--                    <printEqualFiles>true</printEqualFiles>-->
+            <!--                    <preferLocal>true</preferLocal>-->
+
+            <!--                    <includeBootClasspath>false</includeBootClasspath>-->
+            <!--                    <bootClasspathProperty>sun.boot.class.path</bootClasspathProperty>-->
+
+            <!--                    <includePomProjects>false</includePomProjects>-->
+            <!--                    <ignoredDependencies>-->
+            <!--                        <dependency>-->
+            <!--                            <groupId>com.budzko</groupId>-->
+            <!--                            <artifactId>maven-dependency1</artifactId>-->
+            <!--                            <version>1.0-SNAPSHOT</version>-->
+            <!--                        </dependency>-->
+            <!--                  9  </ignoredDependencies>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
+        </plugins>
+    </build>
+</project>

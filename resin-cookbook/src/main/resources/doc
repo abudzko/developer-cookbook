@@ -1,0 +1,30 @@
+download zip - https://caucho.com/products/resin/download
+put war file(for example simple.war) in webapps directory
+run resin.exe
+Perform request: http://localhost:8080/simple/simple
+https://dzone.com/refcardz/getting-started-caucho-resin?chapter=1 - tutorial
+https://caucho.com/resin-4.0/ - Documentation
+
+see comments in resin.xml
+
+ssl:
+    Need to generate sert and key
+    Need to get licence
+    http://www.caucho.com/resin-4.0/admin/security-ssl.xtp
+    openssl - http://gnuwin32.sourceforge.net/packages/openssl.htm (see resin-3.2-reference.pdf) - download binary
+    http://bugs.caucho.com/view.php?id=6342&nbn=1
+    On ubuntu it works
+    Couldn't get it work on Windows 10, Java 11
+    #
+    # A fatal error has been detected by the Java Runtime Environment:
+    #
+    #  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x0000015de87a2246, pid=2160, tid=6360
+    #
+    # JRE version: OpenJDK Runtime Environment (Zulu11.33+15-CA) (11.0.4+11) (build 11.0.4+11-LTS)
+    # Java VM: OpenJDK 64-Bit Server VM (11.0.4+11-LTS, mixed mode, tiered, compressed oops, g1 gc, windows-amd64)
+    # Problematic frame:
+    # C  [resinssl.dll+0x2246]
+
+
+
+

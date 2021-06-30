@@ -1,0 +1,9 @@
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu-tarball/
+
+1) MongoDB Download Center - download tgz
+2) tar -zxvf mongodb-linux-*-4.4.2.tgz - unpack
+3) Chose paths(for mongodb data and logs) and create them
+    sudo mkdir -p /path-to-mongodb-data
+    sudo mkdir -p /path-to-mongodb-log
+4) Start: mongod --dbpath /path-to-mongodb-data --logpath /path-to-mongodb-log --fork
+

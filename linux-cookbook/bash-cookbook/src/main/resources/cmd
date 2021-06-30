@@ -1,0 +1,93 @@
+run script(ensure that 'script' file is executable - chmod u+x script)
+./script
+#pass parameter in script
+./script ABC
+./script 'ABC'
+#pass parameter and key in script
+./script -p ABC
+#-e - exit/stop execution immediately in case of error
+bash -e script
+#0 - stdin, 1 - stdout, 2 - stderr
+#write errors to file
+grep "curl" /etc/* 2> ~/Downloads/x
+#write error to null device
+grep "curl" /etc/* 2> /dev/null
+
+#create hard link
+ln file.txt newfile.txt
+file.txt    -\
+              |--> data
+newfile.txt -/
+#create symbolic link
+ln -s file.txt file1.txt
+file1.txt->file.txt-->data
+
+
+#fdisk - manipulate disk partition table
+Oracle VM VirtualBox Manager -> Settings -> Storage-> Add hard disk -> Create new disk -> VDI -> Dynamically allocated -> 1GB
+fdisk -l
+#Disk /dev/sdb: 1 GiB, 1073741824 bytes, 2097152 sectors
+fdisk /dev/sdb
+#fdisk [options] device
+m - print menu
+p - print partition table
+n - add a new partition
+p - primary
+1
++500M
+p
+w - write table to disk and exit
+
+#delete partition
+fdisk /dev/sdb
+
+mkfs - build a Linux filesystem
+sudo mkfs.ext4 /dev/sdb2
+
+sudo mount /dev/sdb2 /home/budzko/disk2/
+sudo umount /dev/sdb1
+
+#df - report file system disk space usage
+# T - print file system type
+df -hT
+
+
+#stat - display file or file system status
+stat <filename>
+
+#w - Show who is logged on and what they are doing.
+w
+
+#last, lastb - show a listing of last logged in users
+last
+
+#passwd - change user password
+passwd <username>
+
+
+#useradd - create a new user or update default new user information
+#userdel - delete a user account and related files
+#usermod - modify a user account
+
+#information about user passwords
+sudo cat /etc/shadow
+https://www.cyberciti.biz/faq/understanding-etcshadow-file/
+
+#id - print real and effective user and group IDs
+id <username>
+
+sudo cat /etc/group
+https://www.cyberciti.biz/faq/understanding-etcgroup-file/
+
+#The /etc/skel directory contains files and directories that are automatically copied over to a new user’s when it is created from useradd command.
+ll /etc/skel/
+
+#chmod - change file mode bits
+chmod g+w <filename>
+chmod o-r <filename>
+chmod u-w <filename>
+# 1-x, 2-w, 4-r
+chmod 777 <filename>
+
+# chown - change file owner and group
+chown root:root <filename>

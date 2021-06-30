@@ -1,0 +1,66 @@
+#Change owner and group recursively for all files and subdirectories
+sudo chown -R abudzko:abudzko .
+
+#lshw - tool to extract detailed information on the hardware configuration of the machine
+sudo lshw
+
+#Show info about OS version(Prints distribution specific information)
+lsb_release -a
+
+
+#Kill processes
+sudo kill -9 pid1 pid2
+
+#Print run processes and find processes with "nginx"  key
+ps aux | grep "nginx"
+a - show processes for all users
+u - display the process's user/owner
+x - also show processes not attached to a terminal
+
+
+man uptime
+man -k date
+whereis uptime
+whatis uptime
+lscpu
+info man
+man info
+uptime
+date
+pwd
+ll
+mv
+cp
+touch
+cat
+more
+less
+ln -s file_name link_name
+ln file_name duplicate_file_name
+
+#To command in one line
+pwd;ls
+#How many argument can accept bash script
+getconf ARG_MAX
+-rw-r--r--
+chmod 611 script (rw---x--x)
+1 - execute
+2 - write
+3 - 1 + 2 (execute + write)
+4 - read
+5 - 1 + 4 (execute + read)
+6 - 2 + 4 (write + read)
+7 - 1 + 2 + 4 (execute + write + read)
+
+#remove write rights for current user
+chmod  u-w file
+#remove write rights for current user
+chmod  u+w file
+#remove write and write rights for current user
+chmod  u-wr file
+#remove write and write rights for group
+chmod  g-wr file
+#remove write and write rights for all
+chmod a-wr file
+#remove write and write rights for other users
+chmod o-wr file

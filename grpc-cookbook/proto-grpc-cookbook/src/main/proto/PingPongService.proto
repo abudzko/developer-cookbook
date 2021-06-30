@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.budzko.cookbook.grpc;
+
+message PingMessage {
+    string payload = 1;
+}
+
+message PongMessage {
+    string payload = 1;
+}
+
+service PingPongService {
+    rpc ping(PingMessage) returns (PongMessage);
+}

@@ -1,0 +1,56 @@
+#!/bin/bash
+a=`ls -la | grep -oP "\d+" | wc -l` #assign the result of commans to variable
+
+if [ $a -gt 1 ]
+then
+    echo $(($b + $a)) #arithmetic operations
+fi
+
+c=text
+echo $c
+
+
+if [ -z $1 ]
+then
+    echo "zero"
+fi
+
+if [ $c = $c ]
+then
+    echo "equals"
+fi
+
+d
+./script2 #call other script
+
+for var in `cat script`; do
+    echo $var
+done
+
+for var in `ls -R ~/`; do
+    echo $var
+done
+
+echo $*
+
+for var in $@; do #iterate over input script parameters
+   echo $var
+done
+
+echo $0 #print value of first input script paramater - script name
+
+case $1 in
+-x) echo "X" ;; #processing script key - ./script -x
+-y) echo "Y" ;;
+-*) echo "UNKNOWN" ;;
+esac
+
+
+echo -n "Print name:" #print without new line
+read name #read user input in variable $name
+
+echo -n "Print age:"
+read age
+
+echo $name "=" $age
+

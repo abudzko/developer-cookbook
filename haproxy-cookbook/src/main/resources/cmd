@@ -1,0 +1,10 @@
+#Run HAProxy with config file
+sudo haproxy -f ceapiv2.cfg
+#Valdate HAProxy config file without run
+sudo haproxy -f ceapiv2.cfg -c
+#Connect to HAProxy in runtime
+sudo socat /run/haproxy/admin.sock stdio
+
+    set server allservers/server1 state drain
+    set server allservers/server1 state ready
+    set server allservers/server1 state down

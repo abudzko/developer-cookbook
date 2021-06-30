@@ -1,0 +1,35 @@
+<!--Replace origin resin.xml within $RESIN-HOME/conf/resin.xml to apply this config during Resin start-->
+<resin xmlns="http://caucho.com/ns/resin"
+       xmlns:resin="urn:java:com.caucho.resin">
+
+    <resin:properties path="${__DIR__}/resin.properties" optional="true"/>
+    <resin:import path="${__DIR__}/cluster-default.xml"/>
+
+    <cluster id="app">
+        <!--        $RESIN-HOME is a directory where Resin is located, for example: d:\install\resin-pro-4.0.65\-->
+        <!--        ${app_servers} - see resin.properties in $RESIN-HOME/conf/resin.properties - it's a localhost:8080 or 127.0.0.1:8080 -->
+        <server-multi id-prefix="app-" address-list="${app_servers}"
+                      port="6800" watchdog-port="${watchdog_port}">
+<!--            Could get ssl to work on Windows 10, Java 11-->
+<!--            <http port="8081">-->
+<!--                <openssl>-->
+<!--                    <certificate-file>WEB-INF/classes/config/gryffindor.crt</certificate-file>-->
+<!--                    <certificate-key-file>WEB-INF/classes/config/gryffindor.key</certificate-key-file>-->
+<!--                </openssl>-->
+<!--            </http>-->
+        </server-multi>
+
+        <!--        Reads HTTP "Host":(use any Rest client to set and this header with request, for example install ARC) header from request and routes request to this host-->
+        <!--        Example of request
+                    GET
+                    http://localhost:8080/root/simple
+                    Host: www.simple.com
+                    -->
+        <!--        root-directory ($RESIN-HOME/webapps, web apps should be with this directory-->
+        <host id="www.simple.com" root-directory="webapps">
+            <!--        archive-path - war archive should be located by path webapps/simple.war then Resin will unpack it-->
+            <!--        root-directory - unpacked web archive should be in webapps/simple/-->
+            <web-app id="/root" root-directory="simple" archive-path="simple.war"/>
+        </host>
+    </cluster>
+</resin>

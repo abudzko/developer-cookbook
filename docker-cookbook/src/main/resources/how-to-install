@@ -1,0 +1,16 @@
+https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
+
+sudo apt-get update
+Allow the operation to complete.
+Uninstall old Versions of Docker
+sudo apt-get remove docker docker-engine docker.io
+Install Docker
+sudo apt install docker.io
+Step 4: Start and Automate Docker
+The Docker service needs to be setup to run at startup. To do so, type in each command followed by enter:
+
+sudo systemctl start docker
+sudo systemctl enable docker
+
+Check Docker Version
+docker --version

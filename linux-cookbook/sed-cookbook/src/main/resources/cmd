@@ -1,0 +1,3 @@
+#sed doesn't modify source file. Just returns result to console output
+#Replace "ab" on "ba" in file all file (g - global)
+sed "s/ab/ba/g" file

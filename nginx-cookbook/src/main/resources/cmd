@@ -1,0 +1,17 @@
+To install:
+Visit http://nginx.org/en/download.html
+Download zip: nginx/Windows-1.19.3  pgp
+
+From d:\install\nginx-1.19.3\
+
+To start Nginx
+>start nginx.exe
+To check that it works: localhost:80
+
+To stop Nginx
+> nginx.exe -s quit
+
+
+>nginx.exe -c D:\work\projects\developer-cookbook\nginx-cookbook\src\main\resources\nginx-as-lb.conf
+(test config without run) nginx.exe -t -c D:\work\projects\developer-cookbook\nginx-cookbook\src\main\resources\nginx-as-lb.conf
+sudo nginx -c /../nginx.conf

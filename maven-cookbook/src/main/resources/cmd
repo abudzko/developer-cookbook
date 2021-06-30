@@ -1,0 +1,25 @@
+#skip not only test but and compilation of source of test classes by maven-surefire-plugin(from parent pom)
+mvn clean install -Dmaven.test.skip=true -T4
+
+#The effective-pom goal is used to make visible the POM that results from the application of interpolation, inheritance
+#and active profiles. It provides a useful way of removing the guesswork about just what ends up in the POM
+#that Maven uses to build your project. It will iterate over all projects in the current build session, printing the effective POM for each.
+mvn help:effective-pom
+
+
+#
+mvn dependency:tree
+
+#Debug maven build
+alias mvndebug="/usr/local/dev/apache-maven/bin/mvnDebug"
+#In Idea
+localost 8000
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+
+#Debug tests run by maven
+mvn -Dtest=CeapiIntegrationTest#testEngagementPageIdVerification -Dmaven.surefire.debug test
+#localost 5005
+
+
+#Maven proxy
+mvn clean install -DskipTests -Denv=dev -T4 -Dhttp.proxyHost=10.10.129.12 -Dhttp.proxyPort=3128
