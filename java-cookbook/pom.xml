@@ -9,12 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.budzko</groupId>
     <artifactId>java-cookbook</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>java-study-cookbook</module>
+        <module>java-agent</module>
+        <module>javaee-cookbook</module>
     </modules>
-
-
 </project>

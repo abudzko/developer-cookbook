@@ -1,0 +1,7 @@
+management:
+  endpoints:
+    enabled-by-default: true
+    web.exposure.include: health,info,prometheus,liquibase,scheduledtasks,metrics
+  endpoint:
+    health.enabled: true
+    prometheus.enabled: true

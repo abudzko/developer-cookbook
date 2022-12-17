@@ -1,0 +1,6 @@
+~/install/apache-zookeeper-3.7.0$ ./bin/zkServer.sh start
+~/install/apache-zookeeper-3.7.0$ ./bin/zkServer.sh stop
+
+telnet localhost 2181
+srvr
+

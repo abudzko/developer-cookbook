@@ -1,0 +1,10 @@
+#install psql
+sudo apt install postgresql-client-common
+sudo apt-get install postgresql-client
+
+#Connect to db
+#psql -h localhost -p 15433 -d dbname -U admin -W
+#-w - prompt for password
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+SHOW TRANSACTION ISOLATION LEVEL

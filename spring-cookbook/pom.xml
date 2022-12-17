@@ -9,13 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.budzko</groupId>
     <artifactId>spring-cookbook</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>spring-security-cookbook</module>
         <module>springboot-cookbook</module>
     </modules>
-
-
 </project>

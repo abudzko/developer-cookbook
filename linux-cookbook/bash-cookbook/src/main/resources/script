@@ -1,5 +1,5 @@
 #!/bin/bash
-a=`ls -la | grep -oP "\d+" | wc -l` #assign the result of commans to variable
+a=`ls -la | grep -oP "\d+" | wc -l` #assign the result of commands to variable
 
 if [ $a -gt 1 ]
 then
@@ -37,7 +37,7 @@ for var in $@; do #iterate over input script parameters
    echo $var
 done
 
-echo $0 #print value of first input script paramater - script name
+echo $0 #print value of first input script parameter - script name
 
 case $1 in
 -x) echo "X" ;; #processing script key - ./script -x
@@ -53,4 +53,3 @@ echo -n "Print age:"
 read age
 
 echo $name "=" $age
-

@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: test-1
+      author: budzko
+      changes:
+        - sqlFile:
+            dbms: h2
+            path: v1_changes_insert_test_data.sql
+            relativeToChangelogFile: true

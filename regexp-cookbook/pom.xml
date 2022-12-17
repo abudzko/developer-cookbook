@@ -9,8 +9,5 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.budzko</groupId>
     <artifactId>regexp-cookbook</artifactId>
-
-
 </project>

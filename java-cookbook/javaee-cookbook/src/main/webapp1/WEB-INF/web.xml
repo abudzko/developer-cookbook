@@ -1,0 +1,17 @@
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <display-name>Hello App</display-name>
+
+    <servlet>
+        <servlet-name>hello-app</servlet-name>
+        <servlet-class>com.budzko.cookbook.java.ee.web.AppServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello-app</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+</web-app>

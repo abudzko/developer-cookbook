@@ -1,0 +1,11 @@
+server.port: 8081
+spring:
+  mvc:
+    static-path-pattern: /content/**
+  web:
+    resources:
+      static-locations: file:/home/aliaksei/workspace/js-code/
+      cache:
+        period: 5
+        cachecontrol:
+          max-age: 6

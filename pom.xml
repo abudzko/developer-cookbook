@@ -26,6 +26,11 @@
         <module>graphite-cookbook</module>
         <module>log4j2-cookbook</module>
         <module>windows-cookbook</module>
+        <module>sql-cookbook</module>
+        <module>zookeeper-cookbook</module>
+        <module>kafka-cookbook</module>
+        <module>git-cookbook</module>
+        <module>pastgresql-cookbook</module>
     </modules>
     <packaging>pom</packaging>
 

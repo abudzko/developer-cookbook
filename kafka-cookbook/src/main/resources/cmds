@@ -1,0 +1,11 @@
+sh bin/kafka-server-start.sh config/tmp/server1.properties
+server1.properties
+broker.id=1
+listeners=PLAINTEXT://:9091
+log.dirs=/tmp/kafka-logs-1
+
+sh bin/kafka-server-start.sh config/tmp/server2.properties
+server2.properties
+broker.id=2
+listeners=PLAINTEXT://:9092
+log.dirs=/tmp/kafka-logs-2

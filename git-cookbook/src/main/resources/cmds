@@ -1,0 +1,30 @@
+#Local git tags
+git tag
+
+#Search by tag
+git tag -l "2.1*"
+
+#Create annotated tag(checksummed; contain the tagger name, email, and date; have a tagging message)
+git tag -a 2.1.0 -m "2.1.0-RC"
+
+#Create lightweight tag
+git tag 2.1.0
+
+# Show tag
+git show 2.1.0
+
+#Set username/email for specific repository
+git config user.name "Your project specific name"
+git config user.email "your@project-specific-email.com"
+
+#Read username/email for specific repository
+git config --get user.name
+git config --get user.email
+
+Set the username/email globally
+git config --global user.name "Your global username"
+git config --global user.email "your@email.com"
+
+#Read global username/email
+git config --global --get user.name
+git config --global --get user.email
