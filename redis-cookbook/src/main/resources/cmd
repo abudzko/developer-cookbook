@@ -1,0 +1,7 @@
+docker run --name redis1 -d redis
+telnet 172.17.0.2 6379
+telnet 172.17.0.2 16379 - cluster bus port - "quit" to exit or type Ctrl + ] and telnet> close
+
+#https://redis.io/docs/management/scaling/
+To make Docker compatible with Redis Cluster, you need to use Docker's host networking mode. Please see the --net=host
+

@@ -9,3 +9,7 @@ server2.properties
 broker.id=2
 listeners=PLAINTEXT://:9092
 log.dirs=/tmp/kafka-logs-2
+
+docker-compose -f docker-compose-cluster.yaml up
+
+https://betterprogramming.pub/kafka-docker-run-multiple-kafka-brokers-and-zookeeper-services-in-docker-3ab287056fd5

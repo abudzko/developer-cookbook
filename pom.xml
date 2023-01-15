@@ -30,6 +30,7 @@
         <module>zookeeper-cookbook</module>
         <module>kafka-cookbook</module>
         <module>git-cookbook</module>
+        <module>redis-cookbook</module>
         <module>pastgresql-cookbook</module>
     </modules>
     <packaging>pom</packaging>

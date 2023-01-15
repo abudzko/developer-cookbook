@@ -1,6 +1,9 @@
 ~/install/apache-zookeeper-3.7.0$ ./bin/zkServer.sh start
 ~/install/apache-zookeeper-3.7.0$ ./bin/zkServer.sh stop
 
+
+~/install/apache-zookeeper-3.7.0$ ./bin/zkServer.sh start /home/aliaksei/workspace/developer-cookbook/zookeeper-cookbook/src/main/resources/zoo.cluster.cfg
+
 telnet localhost 2181
 srvr
-
+quit - to exit
