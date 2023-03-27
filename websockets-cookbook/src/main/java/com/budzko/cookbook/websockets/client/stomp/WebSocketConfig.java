@@ -15,7 +15,8 @@ import java.util.Set;
 public class WebSocketConfig {
 
     private final String webSocketStompUrl = "ws://localhost:8080/webapp";
-    private final String webSocketStompPath = "/app/message";
+    private final String webSocketStompPath = "/fight-game/message";
+//    private final String webSocketStompPath = "/app/message";
     private final Set<String> webSocketStompSubscriptions = Set.of("/topic/pong");
 
     @Bean

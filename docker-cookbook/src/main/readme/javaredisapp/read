@@ -1,0 +1,19 @@
+mvn clean install
+cd /home/aliaksei/workspace/developer-cookbook/docker-cookbook/src/main/resources/javaredisapp
+
+docker build /home/aliaksei/workspace/developer-cookbook/docker-cookbook/target/ -f Dockerfile --tag javaredisapp
+
+docker stack deploy -c compose.yml my_service
+
+docker stack rm my_service
+===
+For k8s-deployment.yml
+
+kubectl apply -f k8s-deployment.yml
+kubectl delete -f k8s-deployment.yml
+
+TODO
+1. https://benbrougher.tech/posts/microk8s-ingress/
+microk8s + metal lb + Service (type: LoadBalancer + selector) >  ingress resource -> Service ClusterIP
+
+2. ResourceQuota for namespaces locally

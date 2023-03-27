@@ -1,0 +1,3 @@
+kubectl api-resources
+kubectl explain services --recursive
+kubectl explain services.spec --recursive

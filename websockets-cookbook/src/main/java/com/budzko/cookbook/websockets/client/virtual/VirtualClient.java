@@ -14,8 +14,6 @@ public class VirtualClient implements OnMessageListener<Message> {
     private final WebSocketConnection<Message> webSocketConnection;
     private final int messageToSendCount = 3;
     private final int intervalBetweenMessagesSec = 1;
-    private final String url = "ws://localhost:8080/webapp";
-
     public VirtualClient(WebSocketConnection<Message> webSocketConnection) {
         this.webSocketConnection = webSocketConnection;
         webSocketConnection.addOnMessageListener(this);

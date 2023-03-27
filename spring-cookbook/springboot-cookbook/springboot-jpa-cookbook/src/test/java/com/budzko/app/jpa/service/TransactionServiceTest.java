@@ -17,6 +17,13 @@ import java.util.concurrent.Future;
 
 @Slf4j
 @SpringBootTest
+/**
+ * spring:
+ *   datasource:
+ *     hikari:
+ *       maximum-pool-size: 10 #maximum pool size
+ * Long transactions can acquire all connections
+ */
 class TransactionServiceTest {
 
     protected static final int TASK_DURATION_MS = 5000;

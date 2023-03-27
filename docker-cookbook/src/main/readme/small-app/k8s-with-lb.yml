@@ -1,0 +1,73 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: small-app-ingress
+spec:
+  rules:
+    - host: smal.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: small-app-service
+                port:
+                  number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: small-app-load-balancer-service
+  namespace: ingress #Ensure that namespace is ingress
+spec:
+  selector:
+    name: nginx-ingress-microk8s #ingress controller pod prefix name - see cmd about what is it
+  type: LoadBalancer
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: small-app-service
+spec:
+  selector:
+    app: small-app
+    context: dev
+  ports:
+    - port: 80
+      targetPort: 8081
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: small-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: small-app
+      context: dev
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: small-app
+        context: dev
+    spec:
+      containers:
+        - name: small-app
+          image: abudzko/tmp:small
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          resources:
+            requests:
+              cpu: "200m"
+              memory: 100Mi
+            limits:
+              cpu: "500m"
+              memory: 200Mi

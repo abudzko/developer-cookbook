@@ -1,0 +1,14 @@
+microk8s start
+microk8s stop
+microk8s status
+microk8s enable dns
+
+microk8s add-node
+node1:
+/etc/hosts
+ip2 node2
+node2:
+/etc/hosts
+ip1 node1
+
+kubectl get nodes

@@ -1,32 +1,44 @@
 package com.budzko.identity.controller;
 
-import com.budzko.identity.model.UserSignUpRequest;
-import com.budzko.identity.service.UserService;
+import com.budzko.identity.model.http.TokenResponse;
+import com.budzko.identity.model.http.UserRegistrationRequest;
+import com.budzko.identity.service.RegistrationService;
+import com.budzko.identity.service.token.TokenIssuer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.nio.charset.StandardCharsets;
+import java.security.Principal;
 
 @RestController
 @Slf4j
 @RequiredArgsConstructor
 public class IdentityController {
 
-    private final UserService userService;
+    private final RegistrationService registrationService;
+    private final TokenIssuer tokenIssuer;
 
-    @PostMapping("/signUp")
-    public void signUp(@RequestBody UserSignUpRequest userSignUpRequest) {
-        userService.registerUser(userSignUpRequest);
+    /**
+     * @return Access and Refresh tokens
+     */
+    @PostMapping("/accessToken")
+    public TokenResponse accessToken(Principal principal) {
+        log.info("accessToken");
+        return tokenIssuer.issueToken(principal.getName());
     }
 
-    @PostMapping("/signIn")
-    public void signIn() {
-        log.info("signIn");
+    @PostMapping(value = "/register")
+    public void register(@RequestBody UserRegistrationRequest userRegistrationRequest) {
+        registrationService.registerUser(userRegistrationRequest);
     }
 
-    @PostMapping("/signOut")
-    public void signOut() {
-        log.info("signOut");
+    @GetMapping(value = "/getPublicKey")
+    public String getPublicKey(@RequestParam(name = "login") String login) {
+        return new String(registrationService.getPublicKey(login), StandardCharsets.UTF_8);
     }
 }

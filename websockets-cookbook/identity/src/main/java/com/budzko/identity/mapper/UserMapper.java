@@ -1,7 +1,7 @@
 package com.budzko.identity.mapper;
 
 
-import com.budzko.identity.model.UserSignUpRequest;
+import com.budzko.identity.model.http.UserRegistrationRequest;
 import com.budzko.identity.repo.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
@@ -13,5 +13,5 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 )
 public interface UserMapper {
 
-    UserEntity convert(UserSignUpRequest userSignUpRequest);
+    UserEntity convert(UserRegistrationRequest userRegistrationRequest);
 }

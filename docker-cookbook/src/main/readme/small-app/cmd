@@ -1,0 +1,30 @@
+mvn clean install
+
+docker build /home/aliaksei/workspace/developer-cookbook/spring-cookbook/springboot-cookbook/springboot-smallapp-cookbook/target/ -f Dockerfile --tag small
+
+docker tag small:latest abudzko/tmp:small
+docker push abudzko/tmp:small
+
+kubectl apply -f k8s.yml
+kubectl delete -f k8s.yml
+
+
+name=nginx-ingress-microk8s
+
+
+microk8s enable ingress
+LoadBalancer Service selects: "kubectl describe -n ingress pod nginx-ingress-microk8s-..." pod
+kubectl describe service -n ingress
+
+Name:                     small-app-load-balancer-service
+...
+Endpoints:                10.1.10.132:80 (ip of nginx-ingress-microk8s-... pod)
+
+
+curl --header "Host: small.com" http://192.168.1.110/ping
+192.168.1.110 - confgured when microk8s enable metallb or can be changed as resource kubectl edit -n metallb-system ipaddresspools.metallb.io
+
+But ping 192.168.1.110 will not work! - specifics of metallb
+
+curl http://small.com/ping
+From browser http://small.com/ping (in /etc/hosts add 192.168.1.110 small.com)

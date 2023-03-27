@@ -1,0 +1,31 @@
+sudo docker run docker/whalesay cowsay Hello World
+
+#Connect to container
+sudo docker exec -i <container_id> sh
+docker exec -it <container_id> bash
+#Postgres db within container
+root@c2b34b52b1fb:/# psql -d db -U user -W
+
+#Stop container
+sudo docker stop <container_id>
+
+#Start application
+sudo docker-compose up api01clan
+sudo docker-compose up nginx
+
+sudo docker-compose up --build api01
+
+
+docker ps -a
+docker images -a
+docker stop <container_id>
+docker start <container_id>
+
+docker logs --follow <container_id>
+docker logs -f <container_id>
+
+#stop service
+sudo docker-compose stop nginx
+
+docker tag javaapp:latest abudzko/tmp:javaapp
+docker push abudzko/tmp:javaapp

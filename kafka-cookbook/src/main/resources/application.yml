@@ -3,3 +3,4 @@ spring:
     bootstrap-servers: localhost:10001,localhost:10002
     topics:
       log-event: log_event
+source: KAFKA-COOKBOOK

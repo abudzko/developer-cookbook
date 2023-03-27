@@ -1,0 +1,35 @@
+Config
+    kubectl config view
+    kubectl config get-contexts
+    kubectl config get-clusters
+    kubectl config get-users
+
+    kubectl config --kubeconfig=demo-config set-cluster demo-cluster --server=localhost --insecure-skip-tls-verify
+    kubectl config --kubeconfig=demo-config set-credentials my-user-name --client-certificate=fake-cert-file --client-key=fake-key-file
+    kubectl config --kubeconfig=demo-config set-context demo-context --cluster=demo-cluster --namespace=demo --user=my-user-name
+    kubectl config --kubeconfig=demo-config use-context demo-context
+    kubectl config --kubeconfig=demo-config view --minify(c
+    kubectl config --kubeconfig=demo-config view --user admin
+
+Token:
+kubectl config set-credentials my-user-name --token=Py93bt12mT
+Basic authentication:
+kubectl config set-credentials my-user-name --username=remote-username --password=password
+Certificates:
+kubectl config set-credentials my-user-name --client-certificate=certificate.crt --client-key=client-key.key
+
+
+kubectl config --kubeconfig=demo-config set-cluster demo-cluster2 --server=remote
+Modify cluster:
+kubectl config --kubeconfig=demo-config set-context demo-context --cluster=demo-cluster2
+
+Deployment:
+    kubectl create deployment --image=nginx --replicas 3 ngx
+    kubectl apply -f k8s-deployment.yml
+    kubectl delete -f k8s-deployment.yml
+    kubectl edit deployment counter-app-deployment
+    kubectl get deployment counter-app-deployment -o yaml
+
+ResourceQuota:
+    kubectl get resourcequota
+    kubectl describe quota

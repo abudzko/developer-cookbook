@@ -1,0 +1,171 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: test-secret
+type: Opaque
+stringData:
+  test-secret-value1: SECRET_1
+  test-secret-value2: SECRET_2
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dev-config
+data:
+  redis-service-port: "6379"
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: app-route
+  namespace: budzko-dev
+spec:
+  host: app-budzko-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+  path: /
+  to:
+    kind: Service
+    name: counter-app-service
+    weight: 100
+  port:
+    targetPort: 8080
+  wildcardPolicy: None
+---
+#Alternative to Route
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-route
+  namespace: budzko-dev
+spec:
+  rules:
+    - host: counter-app-service.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: counter-app-service
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: counter-app-service
+spec:
+  selector:
+    app: counter
+    context: dev
+  ports:
+    - port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: counter-redis-service
+spec:
+  selector:
+    app: redis
+    context: dev
+  ports:
+    - port: 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-redis-deployment
+spec:
+  selector:
+    matchLabels:
+      app: redis
+      context: dev
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis
+        context: dev
+    spec:
+      containers:
+        - name: counter-redis-deployment
+          image: redis:alpine
+          ports:
+            - containerPort: 6379
+          resources:
+            requests:
+              cpu: "500m"
+              memory: 100Mi
+            limits:
+              cpu: "1000m"
+              memory: 200Mi
+          args:
+            - "--save"
+            - ""
+            - "--appendonly"
+            - "no"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: counter
+      context: dev
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: counter
+        context: dev
+    spec:
+      containers:
+        - name: counter-app
+          image: abudzko/tmp:javaapp
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "200m"
+              memory: 100Mi
+            limits:
+              cpu: "500m"
+              memory: 200Mi
+          env:
+            - name: REDIS_SERVICE_HOST
+              value: counter-redis-service
+            - name: REDIS_SERVICE_HOST_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: dev-config
+                  key: redis-service-port
+            - name: TEST_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: test-secret
+                  key: test-secret-value1
+          volumeMounts:
+            - mountPath: /my-cache
+              name: cache-volume
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /ready
+              port: 8080
+              scheme: HTTP
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 2
+      volumes:
+        - name: cache-volume
+          emptyDir:
+            sizeLimit: 100Mi

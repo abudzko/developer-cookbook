@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  nginx1:
+    build:
+      context: .
+      dockerfile: Dockerfile1
+    image: nginx-custom
+    #    command:
+    environment:
+      ENV_1: env_value_1
+      ENV_2: env_value_2
+    volumes:
+      - ./data:/usr/share/nginx/html
+    ports:
+      - 8000:80
+  nginx2:
+    image: nginx
+    ports:
+      - 8001:80
+    depends_on:
+      - nginx1
+#
+#volumes:
+#
+#networks:
