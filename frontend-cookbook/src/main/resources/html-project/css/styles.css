@@ -1,0 +1,139 @@
+body {
+    background-color: rgb(231, 245, 255);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+h1 {
+    font-size: 3rem;
+    color: rgb(52, 118, 133);
+}
+
+h2 {
+    font-size: 2rem;
+    color: rgb(52, 118, 133);
+}
+
+header>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav>ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornflowerblue;
+    border-radius: 15px;
+}
+
+nav>ul>li {
+    margin: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+}
+
+nav>ul>li>a {
+    color: rgb(231, 255, 233);
+    text-decoration-line: none;
+}
+
+nav>ul>li>a:hover {
+    color: rgb(52, 118, 133);
+}
+
+video {
+    border-radius: 15px;
+}
+
+section {
+    display: flex;
+}
+
+.main-section {
+    background-color: rgb(231, 255, 233);
+    border-radius: 15px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+article {
+    flex: 1;
+}
+
+footer {
+    display: flex;
+}
+
+footer div {
+    flex: 1;
+}
+
+.second-section article p {
+    text-align: justify;
+}
+
+.second-section article {
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(231, 255, 233);
+    border-radius: 15px;
+}
+
+.copyright {
+    text-align: right;
+    color: rgb(52, 118, 133);
+    font-size: 1rem;
+}
+
+body>header>img {
+    height: 100px;
+}
+
+footer>div>img {
+    height: 50px;
+}
+
+.video {
+    float: left;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.book-table {
+    background-image: url("../img/book.jpg");
+}
+
+.book-form input {
+    display: block;
+    background-color: rgb(231, 255, 233);
+    border-color: gray;
+    margin-top: 5px;
+    border-radius: 10px;
+    font-size: 2rem;
+    color: gray;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.book-form button {
+    background-color: rgb(52, 118, 133);
+    border-radius: 10px;
+    font-size: 2rem;
+    color: rgb(231, 255, 233);
+}
+
+.book-form label {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Little Lemon</title>
+        <!-- Specifies the language of the web page -->
+        <meta name="language" content="english" />
+        <meta name="author" content="Little Lemon Restaurant" />
+        <meta name="description" content="Tasty dishes" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Tells Google you don’t want to provide an automatic translation for your page if the user uses a different language -->
+        <meta name="googlebot" content="notranslate" />
+
+        <link rel="icon" href="/favicon.ico">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- Open Graph Protocol - a set of metadata rules that allows web pages to describe themselves to social networks  -->
+        <!-- Social media platforms use these meta tags to create a preview of the shared web page. -->
+        <!-- Allows to create preview of the shared weblick in social networks -->
+        <meta property="og:title" content="Little Lemon Restaurant" />
+        <!-- The type of the link -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://..." />
+        <meta property="og:image" content="http://...jpg" />
+        <meta property="og:description" content="Tasty dishes" />
+        <!-- Page is in English and local is United States -->
+        <meta property="og:local" content="en_US" />
+        <!-- Name of the site -->
+        <meta property="og:site_name" content="Little Lemon" />
+    </head>
+
+    <body>
+        <header>
+            <img src="img/logo.png">
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Menu</a></li>
+                <li><a href="index.html">Book</a></li>
+                <li><a href="index.html">About</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section class="main-section">
+                <article>
+                    <h1>Welcome to our restaurant</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, in similique odit cum
+                        reiciendis animi dignissimos. Laborum modi voluptates explicabo ex id fugit, libero inventore,
+                        ut sapiente amet iusto quam? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Consequuntur reprehenderit quis iste tenetur voluptatibus perspiciatis illum. Quae molestiae
+                        explicabo veritatis perferendis, aliquid pariatur ea inventore ipsa, nobis velit assumenda
+                        dolores! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi porro ad accusantium
+                        temporibus sapiente, eius fugit neque esse doloribus odio reiciendis eos eligendi minus facilis
+                        quidem error voluptatem culpa obcaecati. Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Cum labore eius mollitia fugiat suscipit nesciunt eaque sit minima, commodi consequuntur
+                        porro et vero quas nam ratione autem doloremque quos magni.</p>
+                </article>
+            </section>
+            <section class="second-section">
+                <article>
+                    <h2>Very tasty!</h2>
+                    <div class="video">
+                        <video width="100%" controls loop muted autoplay>
+                            <source src="video/video.mp4" type="video/mp4">
+                        </video>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, in similique odit cum
+                            reiciendis animi dignissimos. Laborum modi voluptates explicabo ex id fugit, libero
+                            inventore,
+                            ut sapiente amet iusto quam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. At ex
+                            reiciendis excepturi fugiat recusandae? Tempore suscipit et expedita ipsa, deleniti aut
+                            totam
+                            asperiores dignissimos officia iste reprehenderit non doloribus. Quasi?</p>
+                    </div>
+
+                </article>
+                <article>
+                    <h2>Book Table</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, in
+                        similique odit cum
+                        reiciendis animi dignissimos. Laborum modi voluptates explicabo ex id fugit, libero
+                        inventore,
+                        ut sapiente amet iusto quam?</p>
+                    <form class="book-form">
+                        <label for="name">Enter your name:</label>
+                        <input id="name" name="name" type="text" placeholder="Your Name">
+                        <label for="phone">Enter your phone number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Yout Phone Number"
+                            pattern="[+]{1}[0-9]{11,14}">
+                        <label for="date">Date and Time:</label>
+                        <input type="datetime-local" id="date" name="date">
+                        <div class="submit">
+                            <button type="submit">Book</button>
+                        </div>
+                    </form>
+                </article>
+                <article>
+                    <h2>Opening Hours</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, in similique odit cum
+                        reiciendis animi dignissimos. Laborum modi voluptates explicabo ex id fugit, libero inventore,
+                        ut sapiente amet iusto quam?</p>
+                    <ul>
+                        <li>Monday 8:00 - 22:00</li>
+                        <li>Tuesday 8:00 - 22:00</li>
+                        <li>Wednesday 8:00 - 22:00</li>
+                        <li>Thursday 8:00 - 22:00</li>
+                        <li>Friday 8:00 - 22:00</li>
+                        <li>Saturday 8:00 - 22:00</li>
+                        <li>Sunday 8:00 - 22:00</li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+        <hr>
+        <footer>
+            <div>
+                <img src="img/logo.png">
+            </div>
+            <div class="copyright">
+                <p>Copyright Little Lemon</p>
+            </div>
+        </footer>
+
+    </body>
+
+</html>

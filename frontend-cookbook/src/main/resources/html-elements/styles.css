@@ -1,0 +1,29 @@
+
+#flex-container {
+    display: flex; /*flex, grid, inline*/
+    flex-direction: column;/*column, row*/
+    justify-content: center;
+    align-items: center;
+}
+
+
+p {
+    background-color: aquamarine;
+}
+
+input[type=text] {
+    background-color: yellowgreen ;
+}
+
+form {
+    background-color: aquamarine;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+input:invalid {
+    border: 2px solid rgb(238, 255, 0);
+}
+input:focus:invalid {
+    border: 4px solid rgb(238, 255, 0)ed;
+}

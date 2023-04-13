@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <!-- Specifies the language of the web page -->
+        <meta name="language" content="english" />
+        <meta name="author" content="Author Name" />
+        <meta name="description" content="Page description" />
+        <!-- Recommended to aboid keywords meta data, as search bots consider them as spam  -->
+        <meta name="keywords" content="key1, key2" />
+        <!-- Search bots can ignore robots parameters -->
+        <!-- index - tells search bots to analyze the page -->
+        <!-- follow - tells search bots to visit all links on the page -->
+        <!-- noindx - tells search bots to not analyze the page-->
+        <!-- nofollow - tells search bots to not visit links on the page-->
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Tells Google you don’t want to provide an automatic translation for your page if the user uses a different language -->
+        <meta name="googlebot" content="notranslate" />
+        <!-- HTTP-equiv - stands for HTTP equivalent, and it’s used to simulate HTTP response headers.  -->
+        <!-- instruct the browser to refresh the page every 30 minutes -->
+        <meta http-equiv="refresh" content="130">
+
+        <link rel="icon" href="/favicon.ico">
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- Open Graph Protocol - a set of metadata rules that allows web pages to describe themselves to social networks  -->
+        <!-- Social media platforms use these meta tags to create a preview of the shared web page. -->
+        <!-- Allows to create preview of the shared weblick in social networks -->
+        <meta property="og:title" content="Page title" />
+        <!-- The type of the link -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://..." />
+        <meta property="og:image" content="http://...jpg" />
+        <meta property="og:description" content="Page description" />
+        <!-- Page is in English and local is United States -->
+        <meta property="og:local" content="en_US" />
+        <!-- Name of the site -->
+        <meta property="og:site_name" content="en_US" />
+
+        <title>All elements</title>
+    </head>
+
+    <body>
+        <div>
+            <p style="border: dotted blanchedalmond ">The <strong>Paragraph</strong> is block level element</p>
+        </div>
+        <hr>
+        <div>
+            <em>Used to stress or emphasize content</em>
+        </div>
+        <hr>
+        <div>
+            <del>Deleted</del>
+        </div>
+        <hr>
+        <div>
+            <del>Deleted</del>
+        </div>
+        <hr>
+        <div>
+            <nav>
+                <h2>Navigation</h2>
+                <p>
+                    <a href="/blog">My blog</a>
+                </p>
+                <p>
+                    <a href="https://games.example.com/">Games</a>
+                </p>
+            </nav>
+        </div>
+        <hr>
+        <div>
+            <details>Some data</details>
+        </div>
+        <hr>
+        <div>
+            <summary>Some data</summary>
+        </div>
+        <hr>
+        <div>
+            <blockquote>Quote</blockquote>
+        </div>
+        <hr>
+        <div>
+            <samp>The containing text represents a sample.</samp>
+        </div>
+        <hr>
+        <div>
+            <audio controls loop>
+                <source src="audio.wav" type="audio/wav">
+                <!-- src="audio.mp3" type="audio/mpeg"/> -->
+            </audio>
+        </div>
+        <div>
+            <video width="320" height="240" controls>
+                <!-- muted loop autoplay> -->
+                <source src="video.mp4" type="video/mp4">
+                <!-- <source src="video.mp4" type="video/mp4"> -->
+                <!-- <source src="video.ogg" type="video/ogg"> -->
+            </video>
+        </div>
+        <hr>
+        <div>
+            <canvas style="width: 50px; height: 50px; background-color: aquamarine;"></canvas>
+        </div>
+        <hr>
+        <div>
+            <figure>
+                <img src="right.png" width="160" alt="Image">
+                <figcaption>An Image</figcaption>
+                <!-- Supported formats -->
+                <!-- .APNG – Animated Portable Network Graphics  -->
+                <!-- .AVIF – AV1 Image Format  -->
+                <!-- .GIF – Graphics Interchange Format  -->
+                <!-- .JPEG / .JPG – Joint Photographic Expert Group image format  -->
+                <!-- .PNG – Portable Network Graphics  -->
+                <!-- .SVG – Scalable Vector Graphics  -->
+                <!-- .WEBP – Web Picture Format  -->
+            </figure>
+        </div>
+        <hr>
+        <div>
+            <form method="GET">
+                <div>
+                    <label for="fname">First name:</label>
+                    <input type="text" id="fname" name="fname">
+                    <br>
+                </div>
+                <div>
+                    <label for="pwd">Password:</label>
+                    <input type="password" id="pwd" name="pwd" minlength="4" pattern="[a-z]{4,}" required>
+                    <br>
+                </div>
+                <label>Email:</label>
+                <input type="email" id="email" placeholder="email@mail.com">
+                <br>
+                <label for="phone">Enter your phone number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[+]{1}[0-9]{11,14}">
+                <br>
+                <label for="birthdaytime">Birthday (date and time):</label>
+                <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+                <br>
+                <label>Url:</label>
+                <input type="url" id="url" placeholder="http://www.site.com">
+                <br>
+                <label for="week">Select a week:</label>
+                <input type="week" id="week" name="week">
+                <br>
+                <label for="month_and_year">Month and year:</label>
+                <input type="month" id="month_and_year" name="month_and_year" min="1930-01" value="2000-01">
+                <br>
+                <label>Date:</label>
+                <input type="date" id="date" name="date" />
+                <br>
+                <label>Time:</label>
+                <input type="time">
+                <br>
+                <label>Numeric:</label>
+                <input type="number" placeholder="123">
+                <br>
+                <div>
+                    <label for="item_count">Number of items:</label>
+                    <input type="range" id="item_count" name="item_count" min="1" max="100" value="20"
+                        oninput="this.nextElementSibling.value = this.value">
+                    <output>20</output>
+                    <br>
+                </div>
+                <div>
+                    <label for="rating">Rating</label>
+                    <input type="range" id="rating" name="rating" min="1" max="5" value="5" list="ratings"
+                        oninput="this.nextElementSibling.value = this.value">
+                    <output>5</output>
+                    <datalist id="ratings">
+                        <option value="1" label="1">
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5" label="5"></option>
+                    </datalist>
+                    <br>
+                </div>
+                <div>
+                    <label for="building_location">Locations:</label>
+                    <input type="" id="building_location" name="building_location" list="locations">
+                    <datalist id="locations">
+                        <option>Location 1</option>
+                        <option>Location 2</option>
+                    </datalist>
+                    <br>
+                </div>
+                <div>
+                    <label for="course">Choose a course:</label><br>
+                    <select id="course" name="courselist">
+                        <option value="html">HTML Introduction</option>
+                        <option value="css">Styling with CSS</option>
+                        <optgroup label="JavaScript">
+                            <option value="js-basic">JavaScript Basic</option>
+                            <option value="js-advanced">JavaScript Advanced</option>
+                            <option value="js-expert">JavaScript Expert</option>
+                        </optgroup>
+                        <option value="react">React Basics</option>
+
+                    </select>
+                </div>
+                <div>
+                    <fieldset name="theme" id="theme">
+                        <legend>Mode</legend>
+                        <!-- name should match to id of fieldset -->
+                        <label>
+                            <input type="radio" id="light" name="theme" value="Light">Light
+                        </label>
+                        <label>
+                            <input type="radio" id="dark" name="theme" value="Dark" checked>Dark
+                        </label>
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset name="color" id="color">
+                        <legend>Color</legend>
+                        <label>
+                            <input type="radio" id="red" name="color" value="Red" checked>Red
+                        </label>
+                        <label>
+                            <input type="radio" id="green" name="color" value="Green">Green
+                        </label>
+                    </fieldset>
+                    <br>
+                </div>
+                <div>
+                    <label>Color:</label>
+                    <input type="color">
+                    <br>
+                </div>
+                <input type="hidden" id="custId" name="custId" value="3487">
+                <br>
+                <div>
+                    <label for="myfile">Select a file:</label>
+                    <input type="file" id="myfile" name="myfile" multiple>
+                    <br>
+                </div>
+                <input type="image" src="right.png" alt="Submit" width="48" height="48">
+                <br>
+                <div>
+                    <fieldset name="color" id="color">
+                        <legend>Preferences</legend>
+                        <label>
+                            <input type="checkbox" id="dog" name="dog" value="Dog">I like dogs
+                        </label>
+                        <label>
+                            <input type="checkbox" id="cat" name="cat" value="Cat">I like cats
+                        </label>
+                    </fieldset>
+                    <br>
+                </div>
+                <input type="reset">
+                <br>
+                <input type="submit" value="SUBMIT">
+                <br>
+                <button type="submit" onclick="alert('Are you sure you want to continue?')">
+                    <img src="right.png" alt="Submit the form" height="64" width="64">
+                </button>
+            </form>
+        </div>
+        <hr>
+        <div>
+            <!-- Recommended to no use iframes -->
+            <iframe title="MAP" src="https://www.google.com/maps/embed?"
+             width="160" title="Map"
+             loading="lazy"
+                allow="payment 'none'; camera 'none'; microphone 'none';">
+                <!-- allow="fullscreen” the fullscreen mode can be activated -->
+                <!-- allow=“geolocation” lets you access the user’s location  -->
+                <!-- sandbox="" - apply all sandbox restrictions-->            
+            </iframe>
+        </div>
+        <div id="flex-container">
+            <h1>header1</h1>
+            <h1>header2</h1>
+            <div>Div</div>
+        </div>
+    </body>
+</html>

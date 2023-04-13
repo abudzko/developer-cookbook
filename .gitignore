@@ -3,3 +3,6 @@
 **/target/*
 *.log
 .mvn
+
+**/node_modules/*
+**/build/*
