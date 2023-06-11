@@ -1,46 +1,40 @@
 import { useState, useEffect, useReducer, useRef } from "react"
 import Button from "./Button";
-import useButtonClicked from "./hooks/useButtonClicked";
+import useClicked from "./hooks/useClicked";
 import Input from "./Input";
 
 export default function ButtonPane(props) {
     const [inputValue, setInputValue] = useState("");
-    const [myState, setMyState] = useState(true);
+    const [toggle, setToggle] = useState(true);
 
-    const button = useRef(null);
-    const enabled =useButtonClicked(button)
+    const toggleRef = useRef(null);
+    const customHooktoRef = useRef(null);
+    const enabled = useClicked(customHooktoRef)
 
     const inputChangeHandler = (e) => {
         setInputValue(e.target.value);
     };
     const buttons = [];
-    for (let i = 0; i < 3; i++) {
-        let button = createButton(i, setInputValue, setMyState);
-        buttons.push(button);
-    }
-    const someState = true;
-    // let id = Math.random();
+    buttons.push(createButton("Change input", (key) => setInputValue(value => value + key)));
+    buttons.push(createButton("Change toggle", (key) => setToggle(bool => !bool)));
+
     useEffect(() => {
-        console.log("Start use effect");
-        return () => {
-            console.log("End use effect");
-        }
-    }, [someState]);
+        // console.log("ButtonPane use effect");
+        return () => { }
+    }, [toggle]);
     return (
         <div className="buttonPane">
             <Input value={inputValue} inputChangeHandler={inputChangeHandler} />
             {buttons}
-            <button ref={button}>{enabled.toString()}</button>
+            <p ref={toggleRef}>{toggle.toString()}</p>
+            <p ref={customHooktoRef}>{enabled.toString()}</p>
         </div>
     );
 }
 
-
-function createButton(i, setInputValueFn, setMyStateFn) {
-    return <Button key={i} buttonText={i} buttonClickHandler={() => {
-        setInputValueFn(v => v + i);
-        setMyStateFn(b => !b);
-
-        console.log(`clicked ${i}`);
+function createButton(key, fn) {
+    return <Button key={key} buttonText={key} buttonClickHandler={() => {
+        fn(key);
+        console.log(`clicked ${key}`);
     }} />
 }

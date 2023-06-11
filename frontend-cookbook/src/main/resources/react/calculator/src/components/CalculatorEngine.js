@@ -7,7 +7,7 @@ export class CalculatorEngine {
 
         this.setInput = (i) => input = i;
         this.setOutput = (o) => output = o;
-        this.handleButtonClick = (key) => {
+        this.buttonClickHandler = (key) => {
             if (isControl(key)) {
                 switch (key) {
                     case RESET_INPUT_KEY:

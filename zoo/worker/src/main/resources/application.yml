@@ -1,0 +1,15 @@
+kafka:
+  bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:10001}
+  topic:
+    request-topic-name: request
+    response-topic-name: response
+  consumer:
+    request:
+      client-prefix-id: worker
+      group-id: worker-request
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      max-poll-records: 1

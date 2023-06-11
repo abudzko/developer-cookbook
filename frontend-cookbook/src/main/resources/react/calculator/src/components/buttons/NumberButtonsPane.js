@@ -1,16 +1,16 @@
 import { numbers } from "./buttons";
-import { CalculatorInputContext } from "components/Calculator";
-import { useContext } from "react";
+import { useCalculatorContext } from "components/CalculatorContext";
 
 export default function NumberButtonsPane(props) {
-    const calculatorContext = useContext(CalculatorInputContext);
-    function clickButtonHandler(e) {
-        calculatorContext.calculatorEngine.handleButtonClick(e.target.innerText);
+    console.log("NumberButtonsPane");
+    const calculatorEngine = useCalculatorContext().calculatorEngine;
+    function buttonClickHandler(e) {
+        calculatorEngine.buttonClickHandler(e.target.innerText);
     }
     let buttons = [];
     numbers.forEach(b => {
         let id = `button${b}`;
-        buttons.push(<button key={id} id={id} className="numberButton" onClick={clickButtonHandler} >{b}</button>);
+        buttons.push(<button key={id} id={id} className="numberButton" onClick={buttonClickHandler} >{b}</button>);
     })
 
     return (

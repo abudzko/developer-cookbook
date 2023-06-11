@@ -1,0 +1,77 @@
+# docker-compose -f docker-compose-kafka.yml up
+# docker-compose -f docker-compose-kafka.yml down
+version: "3.9"
+services:
+  zookeeper1:
+    image: confluentinc/cp-zookeeper
+    expose:
+      - 2181 # To listen for client connections
+    hostname: zk1
+    environment:
+      ZOOKEEPER_SERVER_ID: "1" # Unique server ID for all ZooKeeper services
+      ZOOKEEPER_CLIENT_PORT: 2181 # The port to listen for client connections
+      ZOOKEEPER_TICK_TIME: 2000 # The basic time unit in milliseconds used by ZooKeeper. This is used to do heartbeats, and the minimum session timeout will be twice the tickTime.
+      ZOOKEEPER_INIT_LIMIT: 5 # InitLimit is the timeout duration ZooKeeper uses to limit the length of time the ZooKeeper servers in quorum have to connect to a leader
+      ZOOKEEPER_SYNC_LIMIT: 2 # Limits how far out-of-date a server can be from a leader.
+    volumes:
+      - ~/Downloads/tmp/volumes:/var/lib/zookeeper/data
+      - ~/Downloads/tmp/volumes/:/var/lib/zookeeper/log
+      - ~/Downloads/tmp/volumes:/etc/zookeeper/secrets
+  kafka1:
+    image: confluentinc/cp-kafka
+    depends_on: # Wait till ZooKeeper servers will start
+      - zookeeper1
+    expose:
+      # As 'expose' allows us to expose specific ports from our container only to other services on the same network
+      # this port will be used for communication between Kafka Broker nodes and will not be visible for external clients
+      - 9091
+    ports:
+      # Also exposes specified ports from containers.
+      # Unlike the previous section "expose", ports are open not only for other services on the same network
+      # but also to the host(localhost)
+      - "10001:10001"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL_LISTENER:PLAINTEXT,EXTERNAL_LISTENER:PLAINTEXT
+      # There are several possible configurations.
+      # In our case we run cluster within separate network which docker creates by default
+      # See 'docker network inspect cluster_default'
+      # By default 'bridge' driver will be used
+      # INTERNAL_LISTENER - listener name - which will be used for Kafka broker nodes communication within created network
+      # - kafka1:9091 - docker resolve ip address by service name itself - kafka:9091 - > xxx.xxx.xxx.xxx:9091
+      # EXTERNAL_LISTENER - will be used by clients located only on localhost to connect Kafka cluster
+      # - localhost:10001 - is not accessible within cluster network, so it will be returned to clients
+      #  to connect to cluster outside. We make port 10001 accessible for localhost client in "ports" section
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL_LISTENER://kafka1:9091, EXTERNAL_LISTENER://localhost:10001
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL_LISTENER # specify which listener to use for internal broker nodes communication
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1 # it is 3 by default, but we want 1 brokers and override default value
+      KAFKA_ZOOKEEPER_CONNECT: zk1:2181
+      KAFKA_LOG_RETENTION_MS: 100000
+      KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS: 5000
+      KAFKA_LOG_SEGMENT_BYTES: 500
+      KAFKA_LOG_RETENTION_BYTES: 1000
+    volumes:
+      - ~/Downloads/tmp/volumes:/var/lib/kafka/data
+      - ~/Downloads/tmp/volumes:/etc/kafka/secrets
+  kafka-drop:
+    # http://localhost:9000/drop/
+    image: obsidiandynamics/kafdrop
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: kafka1:9091
+      SERVER_SERVLET_CONTEXTPATH: "/drop"
+    depends_on:
+      # Wait till Kafka Broker servers will start
+      - kafka1
+networks:
+  default:
+    external:
+      name: zoo-kafka
+
+#volumes:
+#  zookeeper-data:
+#  zookeeper-log:
+#  zookeeper-secrets:
+#  kafka-data:
+#  kafka-secrets:

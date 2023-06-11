@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useButtonClicked(button) {
+export default function useClicked(ref) {
     const [on, setOn] = useState(true)
     useEffect(() => {
         const buttonClickHandler = () => {
@@ -9,13 +9,13 @@ export default function useButtonClicked(button) {
             console.log(result ? `enabled - ${result}` : `disabled - ${result}`);
         };
 
-        const b = button.current;
-        // console.log("init useButtonClicked");
-        b.addEventListener("click", buttonClickHandler);
+        const element = ref.current;
+        // console.log("Init useClicked");
+        element.addEventListener("click", buttonClickHandler);
         return () => {
             // console.log("return useButtonClicked");
-            b.removeEventListener("click", buttonClickHandler);
+            element.removeEventListener("click", buttonClickHandler);
         }
-    }, [on, button]);
+    }, [on, ref]);
     return on;
 }

@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: prod-1
+      author: zoo-rest
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            path: v1_changes_create_initial_tables.sql
+            relativeToChangelogFile: true

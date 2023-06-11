@@ -1,0 +1,5 @@
+docker swarm init
+docker service create alpine ping 8.8.8.8
+docker service update <service id  - docker service ls> --replicas 3
+docker service rm <service id  - docker service ls>
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error" strict="true" name="ZooWorkerLog4j2Conf">
+    <Properties>
+        <Property name="filename">target/worker.log</Property>
+    </Properties>
+
+    <Appenders>
+        <Appender type="Console" name="Console_Appender">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+            </Layout>
+        </Appender>
+        <Appender type="File" name="File_Appender" fileName="${filename}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+            </Layout>
+        </Appender>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="budzko.zoo.worker" level="info" additivity="false">
+            <AppenderRef ref="File_Appender"/>
+            <AppenderRef ref="Console_Appender"/>
+        </Logger>
+        <Root level="warn">
+            <AppenderRef ref="Console_Appender"/>
+        </Root>
+    </Loggers>
+</Configuration>

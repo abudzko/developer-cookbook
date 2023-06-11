@@ -1,10 +1,9 @@
-import './App.css';
-import ButtonPane from './components/ButtonPane';
+import Main from './components/Main';
 
 function App() {
   return (
     <>
-      <ButtonPane />
+      <Main />
     </>
   );
 }

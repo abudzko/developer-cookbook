@@ -1,13 +1,12 @@
 import CalculatorDisplayPane from "./display/CalculatorDisplayPane";
 import CalculatorButtonPane from "./buttons/CalculatorButtonPane";
-import { createContext, useEffect } from "react";
-import { CalculatorEngine } from "./CalculatorEngine";
+import { useEffect } from "react";
 import { EQUALS_KEY } from "./buttons/buttons";
-
-export const CalculatorInputContext = createContext(null);
-const calculatorEngine = new CalculatorEngine();
+import { useCalculatorContext } from "./CalculatorContext";
 
 export default function Calculator(props) {
+    console.log("Calculator");
+    const calculatorEngine = useCalculatorContext().calculatorEngine;
     useEffect(
         () => {
             const eventListenerId = window.addEventListener("keydown", (e) => {
@@ -21,15 +20,9 @@ export default function Calculator(props) {
         }
     );
     return (
-        <CalculatorInputContext.Provider value={
-            {
-                calculatorEngine: calculatorEngine,
-            }
-        }>
-            <div className="calculator">
-                <CalculatorDisplayPane />
-                <CalculatorButtonPane />
-            </div>
-        </CalculatorInputContext.Provider>
+        <div className="calculator">
+            <CalculatorDisplayPane />
+            <CalculatorButtonPane />
+        </div>
     );
 }

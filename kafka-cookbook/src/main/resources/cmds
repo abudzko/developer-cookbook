@@ -13,3 +13,5 @@ log.dirs=/tmp/kafka-logs-2
 docker-compose -f docker-compose-cluster.yaml up
 
 https://betterprogramming.pub/kafka-docker-run-multiple-kafka-brokers-and-zookeeper-services-in-docker-3ab287056fd5
+
+/install/kafka_2.13-2.8.0/bin$ sh kafka-consumer-groups.sh  --bootstrap-server localhost:10001 --all-groups --describe

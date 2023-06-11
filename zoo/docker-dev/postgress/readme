@@ -1,0 +1,7 @@
+see
+docker-compose-postgres.yml
+    volumes:
+      - ~/Downloads/tmp/volumes/pg/slave:/bitnami/postgresql
+      - ~/Downloads/tmp/volumes/pg/slave/conf/:/bitnami/postgresql/conf/
+postgresql-slave.conf was copied as
+docker cp docker-dev_postgresql-slave_1:/opt/bitnami/postgresql/conf/postgresql.conf ~/Downloads/tmp/postgresql-slave.conf

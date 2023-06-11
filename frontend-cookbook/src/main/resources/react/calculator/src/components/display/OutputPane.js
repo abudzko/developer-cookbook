@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
-import { CalculatorInputContext } from "components/Calculator";
+import { useState } from "react";
+import { useCalculatorContext } from "components/CalculatorContext";
 
 export default function OutputPane(props) {
     const [outputValue, setOutputValue] = useState("result");
-    const calculatorContext = useContext(CalculatorInputContext);
-    calculatorContext.calculatorEngine.setOutput({ outputValue, setOutputValue });
+    useCalculatorContext().calculatorEngine.setOutput({ outputValue, setOutputValue });
     return (
         <div className="calculatorDisplayPane">
             <p className="calculatorOutput">{outputValue}</p>

@@ -1,21 +1,20 @@
-import { useContext } from "react";
 import { mathOperations, controls } from "./buttons";
-import { CalculatorInputContext } from "components/Calculator";
-
-
+import { useCalculatorContext } from "components/CalculatorContext";
 
 export default function OperationButtonsPane(props) {
-    const calculatorContext = useContext(CalculatorInputContext);
-    function clickButtonHandler(e) {
-        calculatorContext.calculatorEngine.handleButtonClick(e.target.innerText);
+    const calculatorEngine = useCalculatorContext().calculatorEngine
+
+    function clickHandelr(e) {
+        let key = e.target.innerText
+        calculatorEngine.buttonClickHandler(key);
     }
     let controlButtons = [];
     controls.forEach(c => {
-        controlButtons.push(<button key={c} className="operationButton" onClick={clickButtonHandler}>{c}</button>);
+        controlButtons.push(<button key={c} className="operationButton" onClick={clickHandelr}>{c}</button>);
     })
     let operationButtons = [];
-    mathOperations.forEach(mo => {
-        operationButtons.push(<button key={mo.key} className="operationButton" onClick={clickButtonHandler}>{mo.key}</button>);
+    mathOperations.forEach(op => {
+        operationButtons.push(<button key={op.key} className="operationButton" onClick={clickHandelr}>{op.key}</button>);
     })
 
     return (
