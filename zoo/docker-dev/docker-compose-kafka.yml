@@ -14,9 +14,9 @@ services:
       ZOOKEEPER_INIT_LIMIT: 5 # InitLimit is the timeout duration ZooKeeper uses to limit the length of time the ZooKeeper servers in quorum have to connect to a leader
       ZOOKEEPER_SYNC_LIMIT: 2 # Limits how far out-of-date a server can be from a leader.
     volumes:
-      - ~/Downloads/tmp/volumes:/var/lib/zookeeper/data
-      - ~/Downloads/tmp/volumes/:/var/lib/zookeeper/log
-      - ~/Downloads/tmp/volumes:/etc/zookeeper/secrets
+      - ~/Downloads/tmp/volumes/kafka/:/var/lib/zookeeper/data
+      - ~/Downloads/tmp/volumes/kafka/:/var/lib/zookeeper/log
+      - ~/Downloads/tmp/volumes/kafka/:/etc/zookeeper/secrets
   kafka1:
     image: confluentinc/cp-kafka
     depends_on: # Wait till ZooKeeper servers will start
@@ -51,8 +51,8 @@ services:
       KAFKA_LOG_SEGMENT_BYTES: 500
       KAFKA_LOG_RETENTION_BYTES: 1000
     volumes:
-      - ~/Downloads/tmp/volumes:/var/lib/kafka/data
-      - ~/Downloads/tmp/volumes:/etc/kafka/secrets
+      - ~/Downloads/tmp/volumes/kafka:/var/lib/kafka/data
+      - ~/Downloads/tmp/volumes/kafka:/etc/kafka/secrets
   kafka-drop:
     # http://localhost:9000/drop/
     image: obsidiandynamics/kafdrop

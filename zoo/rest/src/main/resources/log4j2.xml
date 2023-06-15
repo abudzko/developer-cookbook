@@ -26,7 +26,7 @@
         <Logger name="org.apache.kafka.clients" level="error" additivity="false">
             <AppenderRef ref="File_Appender"/>
         </Logger>
-        <Root level="warn">
+        <Root level="info">
             <AppenderRef ref="Console_Appender"/>
         </Root>
     </Loggers>

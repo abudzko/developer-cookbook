@@ -1,0 +1,19 @@
+# docker-compose -f docker-compose-haproxy.yml up
+# docker-compose -f docker-compose-haproxy.yml down
+version: "3.9"
+services:
+  haproxy-lb:
+    image: 'haproxy:lts-alpine'
+    expose:
+      - 15433
+    volumes:
+      - ./postgres/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    networks:
+      - zoo-postgres-external
+networks:
+  default:
+    external:
+      name: zoo-haproxy
+  zoo-postgres-external:
+    name: zoo-postgres
+    external: true

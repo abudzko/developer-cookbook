@@ -14,6 +14,8 @@ services:
       HTTP_SERVER_PORT: 8080
     networks:
       - zoo-kafka-external
+      - zoo-haproxy-external
+      - zoo-postgres-external
   zoo-rest-app2:
     image: zoo-rest
     ports:
@@ -26,6 +28,8 @@ services:
       HTTP_SERVER_PORT: 8080
     networks:
       - zoo-kafka-external
+      - zoo-haproxy-external
+      - zoo-postgres-external
   zoo-worker-app:
     image: zoo-worker
     hostname: zoo-worker
@@ -37,6 +41,12 @@ services:
 networks:
   zoo-kafka-external:
     name: zoo-kafka
+    external: true
+  zoo-haproxy-external:
+    name: zoo-haproxy
+    external: true
+  zoo-postgres-external:
+    name: zoo-postgres
     external: true
   default:
     external:

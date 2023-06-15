@@ -19,7 +19,8 @@ spring:
   datasource:
     event-writer:
       platform: postgres
-      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:15432/zoo-db}
+      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgresql-master:5432/zoo-db}
+#      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://192.168.1.104:15432/zoo-db}
       username: ${SPRING_DATASOURCE_USERNAME:user}
       password: ${SPRING_DATASOURCE_PASSWORD:password}
       driverClassName: org.postgresql.Driver
@@ -31,7 +32,7 @@ spring:
         maximum-pool-size: 10
     event-reader:
       platform: postgres
-      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:15433/zoo-db}
+      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://haproxy-lb:15433/zoo-db}
       username: ${SPRING_DATASOURCE_USERNAME:user}
       password: ${SPRING_DATASOURCE_PASSWORD:password}
       driverClassName: org.postgresql.Driver
