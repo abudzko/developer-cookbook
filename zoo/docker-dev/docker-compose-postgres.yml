@@ -11,6 +11,8 @@ services:
     volumes:
       - ~/Downloads/tmp/volumes/pg/master:/bitnami/postgresql
       - ~/Downloads/tmp/volumes/pg/master/conf/:/bitnami/postgresql/conf/
+      - ~/Downloads/tmp/volumes/pg/master/:/docker-entrypoint-initdb.d
+      - ~/Downloads/tmp/volumes/pg/master/:/docker-entrypoint-preinitdb.d
     environment:
       - POSTGRESQL_REPLICATION_MODE=master
       - POSTGRESQL_REPLICATION_USER=repl_user
@@ -30,6 +32,8 @@ services:
     volumes:
       - ~/Downloads/tmp/volumes/pg/slave1:/bitnami/postgresql
       - ~/Downloads/tmp/volumes/pg/slave1/conf/:/bitnami/postgresql/conf/
+      - ~/Downloads/tmp/volumes/pg/slave1/:/docker-entrypoint-initdb.d
+      - ~/Downloads/tmp/volumes/pg/slave1/:/docker-entrypoint-preinitdb.d
     environment:
       - POSTGRESQL_REPLICATION_MODE=slave
       - POSTGRESQL_REPLICATION_USER=repl_user
@@ -50,6 +54,8 @@ services:
     volumes:
       - ~/Downloads/tmp/volumes/pg/slave2:/bitnami/postgresql
       - ~/Downloads/tmp/volumes/pg/slave2/conf/:/bitnami/postgresql/conf/
+      - ~/Downloads/tmp/volumes/pg/slave2/:/docker-entrypoint-initdb.d
+      - ~/Downloads/tmp/volumes/pg/slave2/:/docker-entrypoint-preinitdb.d
     environment:
       - POSTGRESQL_REPLICATION_MODE=slave
       - POSTGRESQL_REPLICATION_USER=repl_user
