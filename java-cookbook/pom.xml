@@ -15,5 +15,6 @@
         <module>java-study-cookbook</module>
         <module>java-agent</module>
         <module>javaee-cookbook</module>
+        <module>libs</module>
     </modules>
 </project>
