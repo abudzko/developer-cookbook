@@ -38,6 +38,7 @@
         <module>zoo</module>
         <module>etcd-cookbook</module>
         <module>apache-camel-cookbook</module>
+        <module>spring-cookbook/springboot-cookbook/springboot-test-cookbook</module>
     </modules>
     <packaging>pom</packaging>
 
