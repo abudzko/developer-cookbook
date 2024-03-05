@@ -12,10 +12,17 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class VirtualClient implements OnMessageListener<Message> {
     private final WebSocketConnection<Message> webSocketConnection;
-    private final int messageToSendCount = 3;
-    private final int intervalBetweenMessagesSec = 1;
-    public VirtualClient(WebSocketConnection<Message> webSocketConnection) {
+    private final int messageToSendCount;
+    private final int intervalBetweenMessagesSec;
+
+    public VirtualClient(
+            WebSocketConnection<Message> webSocketConnection,
+            int messageToSendCount,
+            int intervalBetweenMessagesSec
+    ) {
         this.webSocketConnection = webSocketConnection;
+        this.messageToSendCount = messageToSendCount;
+        this.intervalBetweenMessagesSec = intervalBetweenMessagesSec;
         webSocketConnection.addOnMessageListener(this);
     }
 

@@ -3,9 +3,10 @@ package com.budzko.app.jpa.service;
 import com.budzko.app.jpa.repo.CarRepo;
 import com.budzko.app.jpa.repo.PasswordRepo;
 import com.budzko.app.jpa.repo.UserCommentRepo;
-import com.budzko.app.jpa.repo.UserRepo;
+import com.budzko.app.jpa.repo.UsersRepo;
 import com.budzko.app.jpa.repo.entity.UserCommentEntity;
 import com.budzko.app.jpa.repo.entity.UserEntity;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,10 +25,11 @@ import java.util.Set;
         }
 )
 @Slf4j
-public class UserRepoTest {
+@RequiredArgsConstructor
+public class UsersRepoTest {
 
     @Autowired
-    private UserRepo userRepo;
+    private final UsersRepo usersRepo;
     @Autowired
     private CarRepo carRepo;
     @Autowired
@@ -37,7 +39,7 @@ public class UserRepoTest {
 
     @BeforeEach
     public void beforeEach() {
-        userRepo.deleteAll();
+        usersRepo.deleteAll();
     }
 
     @Test
@@ -51,11 +53,10 @@ public class UserRepoTest {
         );
 
         for (UserEntity userEntity : userEntities) {
-            userRepo.save(userEntity);
+            usersRepo.save(userEntity);
         }
 
-        log.info(userRepo.findAll().toString());
-        userRepo.deleteById(userEntities.stream().findFirst().get().getId());
+        usersRepo.deleteById(userEntities.stream().findFirst().get().getId());
         log.info(carRepo.findAll().toString());
         log.info(passwordRepo.findAll().toString());
     }
@@ -71,11 +72,10 @@ public class UserRepoTest {
         );
 
         UserEntity userEntity = userEntities.stream().findFirst().orElseThrow();
-        userRepo.save(userEntity);
+        usersRepo.save(userEntity);
         Set<UserCommentEntity> userCommentEntities = EntityUtils.createUserCommentEntities(2, userEntity);
 
         userCommentEntities.forEach(userCommentEntity -> userCommentRepo.save(userCommentEntity));
         userCommentRepo.deleteAll();
-        log.info(userRepo.findAll().toString());
     }
 }

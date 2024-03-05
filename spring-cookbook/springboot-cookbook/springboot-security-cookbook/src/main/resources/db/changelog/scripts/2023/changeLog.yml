@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: prod-1
+      author: budzko
+      changes:
+        - sqlFile:
+            dbms: postgresql,h2
+            path: v1_changes_create_initial_tables.sql
+            relativeToChangelogFile: true

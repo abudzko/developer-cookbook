@@ -1,5 +1,6 @@
 package budzko.zoo.event.postgres.config.writer;
 
+import budzko.zoo.action.repo.UserActionRepo;
 import budzko.zoo.event.postgres.repo.writer.EventWriterRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,7 +22,7 @@ import java.util.Objects;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackageClasses = {EventWriterRepo.class},
+        basePackageClasses = {EventWriterRepo.class, UserActionRepo.class},
         entityManagerFactoryRef = "eventWriterEntityManagerFactory",
         transactionManagerRef = "eventWriterTransactionManager"
 )
@@ -39,7 +40,7 @@ public class EventWriterConfiguration {
     ) {
         return builder
                 .dataSource(eventWriterDataSource())
-                .packages(EventWriterRepo.class)
+                .packages(EventWriterRepo.class, UserActionRepo.class)
                 .build();
     }
 

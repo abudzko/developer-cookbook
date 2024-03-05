@@ -1,0 +1,12 @@
+websocket:
+  stomp:
+    url: ws://localhost:8080/webapp
+    path: /fight-game/message
+    subscriptions: /topic/pong
+  standard:
+    url: ws://localhost:8080/websocket/message/player
+  client:
+    virtual:
+      count: 2
+      messageToSendCount: 3
+      intervalBetweenMessagesSec: 2

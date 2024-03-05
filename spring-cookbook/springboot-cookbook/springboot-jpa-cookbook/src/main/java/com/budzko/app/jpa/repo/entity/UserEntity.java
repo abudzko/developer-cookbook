@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import java.util.Set;
 
 @Data
-@Entity(name = "user")
+@Entity(name = "users")
 public class UserEntity {
     @Id
     @Column(name = "id")

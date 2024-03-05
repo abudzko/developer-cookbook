@@ -46,7 +46,6 @@ public class KafkaProducer {
                     }
                 });
         proxyInstance.foo();
-        Class
 
     }
 
