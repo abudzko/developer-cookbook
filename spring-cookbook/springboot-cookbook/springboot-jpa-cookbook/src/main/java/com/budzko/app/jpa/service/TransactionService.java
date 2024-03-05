@@ -1,6 +1,6 @@
 package com.budzko.app.jpa.service;
 
-import com.budzko.app.jpa.repo.UserRepo;
+import com.budzko.app.jpa.repo.UsersRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -13,13 +13,13 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class TransactionService {
 
-    private final UserRepo userRepo;
+    private final UsersRepo usersRepo;
 
     @SneakyThrows
     @Transactional
     public void execute(String id, Runnable runnable) {
         log.info("Start transaction {}", id);
-        log.info("User count: {}", userRepo.count());
+        log.info("User count: {}", usersRepo.count());
         runnable.run();
         log.info("Stop transaction {}", id);
     }

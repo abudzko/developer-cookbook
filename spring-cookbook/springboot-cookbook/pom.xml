@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spring.boot.version>2.4.2</spring.boot.version>
+        <spring.boot.version>3.1.1</spring.boot.version>
     </properties>
 
     <dependencyManagement>
@@ -33,6 +33,7 @@
         <module>springboot-kafka-cookbook</module>
         <module>springboot-webapp-cookbook</module>
         <module>springboot-actuator-cookbook</module>
+        <module>springboot-security-cookbook</module>
     </modules>
 
 </project>

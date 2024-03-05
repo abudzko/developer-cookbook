@@ -1,13 +1,17 @@
 spring:
   datasource:
     platform: postgres
-    url: jdbc:h2:mem:${spring.datasource.db-name:db};MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=true
-    username: admin
+#    url: jdbc:postgresql://localhost:localhost15432/users-db
+    url: jdbc:h2:mem:${spring.datasource.db-name:users-db};MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=true
+    username: user
     password: password
+#    driverClassName: org.postgresql.Driver
     driverClassName: org.h2.Driver
     hikari:
       maximum-pool-size: 10 #maximum pool size
   liquibase:
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.yml
     url: ${spring.datasource.url}
@@ -15,13 +19,13 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: none
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         format_sql: true
 logging:
   level:
-    root: INFO
-    org.springframework.web: DEBUG
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    root: DEBUG
+#    org.springframework.web: DEBUG
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

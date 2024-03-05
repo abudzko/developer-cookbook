@@ -1,4 +1,4 @@
-CREATE TABLE user(
+CREATE TABLE users(
     id varchar PRIMARY KEY,
     name varchar
 );
@@ -7,7 +7,7 @@ CREATE TABLE car(
     user_id varchar,
     CONSTRAINT car_user_id_fk
         FOREIGN KEY (user_id)
-        REFERENCES user(id)
+        REFERENCES users(id)
 );
 CREATE TABLE password(
     id varchar PRIMARY KEY,
@@ -15,7 +15,7 @@ CREATE TABLE password(
     password varchar NOT NULL,
     CONSTRAINT password_user_id_fk
         FOREIGN KEY (user_id)
-        REFERENCES user(id)
+        REFERENCES users(id)
         ON DELETE CASCADE
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE passport(
     number varchar NOT NULL,
     CONSTRAINT passport_user_id_fk
         FOREIGN KEY (user_id)
-        REFERENCES user(id)
+        REFERENCES users(id)
         ON DELETE CASCADE
 );
 
@@ -34,6 +34,6 @@ CREATE TABLE user_comment(
     user_id varchar,
     CONSTRAINT user_comment_user_id_fk
         FOREIGN KEY (user_id)
-        REFERENCES user(id)
+        REFERENCES users(id)
         ON DELETE CASCADE
 );

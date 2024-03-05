@@ -4,6 +4,6 @@ databaseChangeLog:
       author: budzko
       changes:
         - sqlFile:
-            dbms: h2
+            dbms: h2,postgresql
             path: v1_changes_insert_test_data.sql
             relativeToChangelogFile: true

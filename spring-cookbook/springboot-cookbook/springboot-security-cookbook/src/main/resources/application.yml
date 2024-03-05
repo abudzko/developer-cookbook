@@ -1,0 +1,36 @@
+server:
+  servlet:
+    contextPath: /api
+db:
+  schema: app_security
+spring:
+  application:
+    name: security-service
+  datasource:
+#    url: jdbc:postgresql://localhost:15432/${spring.datasource.db.name:db}
+    url: jdbc:h2:mem:${spring.datasource.db.name:db};MODE=PostgreSQL;DB_CLOSE_DELAY=-1;
+#    DATABASE_TO_UPPER=true
+    username: ${SPRING_DATASOURCE_USERNAME:user}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
+#    driverClassName: org.postgresql.Driver
+    driverClassName: org.h2.Driver
+  liquibase:
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yml
+    url: ${spring.datasource.url}
+    default-schema: ${db.schema}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+#  sql: #can use only one of liquibase or scheme.sql
+#    init:
+#      schema-locations:
+#        - classpath:schema.sql
+#      mode: always

@@ -36,6 +36,8 @@
         <module>spring-cookbook/springboot-cookbook/springboot-smallapp-cookbook</module>
         <module>frontend-cookbook</module>
         <module>zoo</module>
+        <module>etcd-cookbook</module>
+        <module>apache-camel-cookbook</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -109,4 +111,17 @@
             </build>
         </profile>
     </profiles>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.4.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
 </project>

@@ -5,6 +5,8 @@ if [ "$1" = "down" ]; then
 elif [ "$1" = "up" ]; then
   rest_app_path="../rest"
   worker_app_path="../worker"
+  sh build.sh $rest_app_path
+  sh build.sh $worker_app_path
   docker build $rest_app_path/target/ -f $rest_app_path/Dockerfile --tag zoo-rest
   docker build $worker_app_path/target/ -f $worker_app_path/Dockerfile --tag zoo-worker
   sh apps.sh down

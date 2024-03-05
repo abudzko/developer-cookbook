@@ -24,15 +24,19 @@ public class WebSocketStompConnection extends StompSessionHandlerAdapter impleme
     private final String webSocketStompPath;
     private final Set<String> webSocketStompSubscriptions;
     private final WebSocketStompClient webSocketStompClient;
-
-    private StompSession stompSession;
     private final List<OnMessageListener<Message>> onMessageListeners;
+    private StompSession stompSession;
 
-    public WebSocketStompConnection(WebSocketConfig webSocketConfig) {
-        this.webSocketStompClient = webSocketConfig.webSocketStompClient();
-        this.webSocketStompSubscriptions = webSocketConfig.getWebSocketStompSubscriptions();
-        this.webSocketStompUrl = webSocketConfig.getWebSocketStompUrl();
-        this.webSocketStompPath = webSocketConfig.getWebSocketStompPath();
+    public WebSocketStompConnection(
+            WebSocketStompClient webSocketStompClient,
+            String webSocketStompUrl,
+            String webSocketStompPath,
+            Set<String> webSocketStompSubscriptions
+    ) {
+        this.webSocketStompClient = webSocketStompClient;
+        this.webSocketStompUrl = webSocketStompUrl;
+        this.webSocketStompPath = webSocketStompPath;
+        this.webSocketStompSubscriptions = webSocketStompSubscriptions;
         onMessageListeners = new LinkedList<>();
     }
 

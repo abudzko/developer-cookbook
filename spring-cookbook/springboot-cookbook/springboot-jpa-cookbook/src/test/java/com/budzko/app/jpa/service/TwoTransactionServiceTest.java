@@ -1,6 +1,6 @@
 package com.budzko.app.jpa.service;
 
-import com.budzko.app.jpa.repo.UserRepo;
+import com.budzko.app.jpa.repo.UsersRepo;
 import com.budzko.app.jpa.repo.entity.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -22,12 +22,18 @@ public class TwoTransactionServiceTest {
     @Autowired
     private TwoTransactionService transactionService;
     @Autowired
-    private UserRepo userRepo;
+    private UsersRepo usersRepo;
 
     @Test
     void test() {
-        saveUsers();
+//        saveUsers();
         transactionService.method1(UUID.randomUUID().toString());
+    }
+
+    @Test
+    void test1() {
+        saveUsers();
+        transactionService.method2(UUID.randomUUID().toString());
     }
 
     private void saveUsers() {
@@ -40,7 +46,7 @@ public class TwoTransactionServiceTest {
         );
 
         for (UserEntity userEntity : userEntities) {
-            userRepo.save(userEntity);
+            usersRepo.save(userEntity);
         }
     }
 }

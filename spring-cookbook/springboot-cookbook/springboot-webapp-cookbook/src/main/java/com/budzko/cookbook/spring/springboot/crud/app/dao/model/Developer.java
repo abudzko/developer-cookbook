@@ -1,9 +1,9 @@
 package com.budzko.cookbook.spring.springboot.crud.app.dao.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 @Data

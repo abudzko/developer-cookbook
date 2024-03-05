@@ -7,3 +7,11 @@ databaseChangeLog:
             dbms: postgresql
             path: v1_changes_create_initial_tables.sql
             relativeToChangelogFile: true
+  - changeSet:
+      id: prod-2
+      author: zoo-rest
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            path: v2_changes_partitioned_table.sql
+            relativeToChangelogFile: true

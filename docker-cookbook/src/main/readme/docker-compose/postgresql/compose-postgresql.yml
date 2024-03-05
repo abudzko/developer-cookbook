@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  postgresql-db:
+    container_name: postgresql-db
+    image: postgres
+    restart: always
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    command: [ "postgres", "-c", "log_statement=all" ]
+
+#services:
+#  postgresql-db:
+#    image: 'bitnami/postgresql:15.3.0'
+#    ports:
+#      - "15432:5432"
+#    user: root #warning! workaround
+#    command: [ "postgres", "-c", "log_statement=all" ]
+#    volumes:
+#      - ~/Downloads/tmp/volumes/pg/db:/bitnami/postgresql
+#      - ~/Downloads/tmp/volumes/pg/db/conf/:/bitnami/postgresql/conf/
+#      - ~/Downloads/tmp/volumes/pg/db/:/docker-entrypoint-initdb.d
+#      - ~/Downloads/tmp/volumes/pg/db/:/docker-entrypoint-preinitdb.d
+#    environment:
+#      - POSTGRESQL_USERNAME=user
+#      - POSTGRESQL_PASSWORD=password
+#      - POSTGRESQL_DATABASE=users-db
+#
+#volumes:
+#
+#networks:
