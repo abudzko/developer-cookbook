@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection properties - Driver, URL, user, password -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:15432/db</property>
+        <!--        <property name="hibernate.connection.url">jdbc:h2:mem:users-db;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=true</property>-->
+        <!--        <property name="hibernate.connection.driver_class">org.h2.Driver</property>-->
+        <property name="hibernate.connection.username">user</property>
+        <property name="hibernate.connection.password">password</property>
+
+        <!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Mapping with model class containing annotations -->
+        <mapping class="com.budzko.app.jpa.repo.entity.UserEntity"/>
+        <mapping class="com.budzko.app.jpa.repo.entity.CarEntity"/>
+        <mapping class="com.budzko.app.jpa.repo.entity.PassportEntity"/>
+        <mapping class="com.budzko.app.jpa.repo.entity.PasswordEntity"/>
+        <mapping class="com.budzko.app.jpa.repo.entity.UserCommentEntity"/>
+    </session-factory>
+</hibernate-configuration>

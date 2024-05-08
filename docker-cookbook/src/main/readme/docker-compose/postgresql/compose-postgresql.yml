@@ -12,6 +12,8 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: db
     command: [ "postgres", "-c", "log_statement=all" ]
+    volumes:
+      - ~/Downloads/tmp/volumes/pg/db/data:/var/lib/postgresql/data/
 
 #services:
 #  postgresql-db:

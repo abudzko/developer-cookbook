@@ -1,0 +1,17 @@
+<?xml version = "1.0"?>
+<request>
+    <content>
+        <user>
+            <doc>
+                <id>9999</id>
+            </doc>
+            <address>St.</address>
+        </user>
+        <payment>
+            <amount>100</amount>
+            <details>
+                <id>00-00-11</id>
+            </details>
+        </payment>
+    </content>
+</request>

@@ -1,0 +1,51 @@
+# docker-compose -f compose-kafka.yml up
+#docker-compose -f compose-kafka.yml down
+version: "3.9"
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    expose:
+      - 2181 # To listen for client connections
+    hostname: zk
+    environment:
+      ZOOKEEPER_SERVER_ID: "1" # Unique server ID for all ZooKeeper services
+      ZOOKEEPER_CLIENT_PORT: 2181 # The port to listen for client connections
+      ZOOKEEPER_SERVERS: zk:2888:3888
+  kafka:
+    image: confluentinc/cp-kafka
+    depends_on: # Wait till ZooKeeper server will start
+      - zookeeper
+    expose:
+      - 9091
+    ports:
+      # Also exposes specified ports from containers.
+      # Unlike the previous section "expose", ports are open not only for other services on the same network
+      # but also to the host(localhost)
+      - "10001:10001"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL_LISTENER:PLAINTEXT,EXTERNAL_LISTENER:PLAINTEXT
+      # There are several possible configurations.
+      # In our case we run cluster within separate network which docker creates by default
+      # See 'docker network inspect cluster_default'
+      # By default 'bridge' driver will be used
+      # INTERNAL_LISTENER - listener name - which will be used for Kafka broker nodes communication within created network
+      # - kafka:9091 - docker resolve ip address by service name itself - kafka:9091 - > xxx.xxx.xxx.xxx:9091
+      # EXTERNAL_LISTENER - will be used by clients located only on localhost to connect Kafka cluster
+      # - localhost:10001 - is not accessible within cluster network, so it will be returned to clients
+      #  to connect to cluster outside. We make port 10001 accessible for localhost client in "ports" section
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL_LISTENER://kafka:9091, EXTERNAL_LISTENER://localhost:10001
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL_LISTENER # specify which listener to use for internal broker nodes communication
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1 # it is 3 by default, but we want 2 brokers and override default value
+      KAFKA_ZOOKEEPER_CONNECT: zk:2181
+  kafka-drop:
+    # http://localhost:9000/drop/
+    image: obsidiandynamics/kafdrop
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: kafka:9091
+      SERVER_SERVLET_CONTEXTPATH: "/drop"
+    depends_on:
+      # Wait till Kafka Broker servers will start
+      - kafka

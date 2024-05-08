@@ -1,0 +1,47 @@
+#psql -p 20001 -U user -h localhost -d db
+#psql -p 20002 -U user -h localhost -d db
+
+#docker container exec -it postgresql-db1 bash
+#pg_basebackup -U user --pgdata=/backup/
+#select * from pg_stat_replication \gx
+#sudo chown -R root data/
+#sudo chmod 777 data
+#sudo nano postgresql.auto.conf - how to configure host in other way?
+#primary_conninfo = 'user=user passfile=''/root/.pgpass'' channel_binding=prefer port=5432 host=postgresql-db1 sslmode=prefer sslcompression=0 sslsni=1 ssl_min_protocol_version>
+#pg_hba.conf - host    replication     user            192.168.160.2/24        trust
+
+version: '3.1'
+
+services:
+  postgresql-db1:
+    container_name: postgresql-db1
+    image: postgres
+    restart: always
+    ports:
+      - 20001:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    command: [ "postgres", "-c", "log_statement=all" ]
+    volumes:
+      - ~/Downloads/tmp/volumes/pg/db1/backup:/backup
+      - ~/Downloads/tmp/volumes/pg/db1/data:/var/lib/postgresql/data/
+  postgresql-db2:
+    container_name: postgresql-db2
+    image: postgres
+    restart: always
+    ports:
+      - 20002:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    command: [ "postgres", "-c", "log_statement=all" ]
+    volumes:
+      - ~/Downloads/tmp/volumes/pg/db2/backup:/backup
+      - ~/Downloads/tmp/volumes/pg/db2/data:/var/lib/postgresql/data/
+
+#volumes:
+#
+#networks:

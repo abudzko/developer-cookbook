@@ -1,3 +1,21 @@
+# Set connection limit
+alter database x connection limit 1;
+# Create database from template
+create database x template template1;
+#psql: list of table of all schemas
+\dt *.*
+#psql: list of table of public schema
+\dt public.*
+#psql: list of current db schemas
+\dn
+#psql: connect to database
+\c database_name
+#sql: show databases
+select datname from pg_database;
+#psql: show databases
+\l
+
+
 #install psql
 sudo apt install postgresql-client-common
 sudo apt-get install postgresql-client
