@@ -18,7 +18,7 @@
             <version>1.0.4</version>
             <scope>system</scope>
             <!--https://algs4.cs.princeton.edu/code/algs4.jar-->
-            <systemPath>/home/aliaksei/.m2/repository/edu/princeton/cs/algs4/1.0.4/algs4-1.0.4.jar</systemPath>
+            <systemPath>${project.basedir}/algs4.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

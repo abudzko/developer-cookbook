@@ -5,18 +5,13 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Random;
 
 public class JsonStreamParser {
     public static void main(String[] args) throws Exception {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         generateJson(outputStream, 10);
-
 
         InputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
         InputStream slowInputStream = new InputStream() {

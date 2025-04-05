@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  postgresql-db:
+    container_name: postgresql_big-db
+    image: postgres
+    restart: always
+    ports:
+      - 15433:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: big_db
+    volumes:
+#      - ~/Downloads/tmp/volumes/pg/big_db/data:/var/lib/postgresql/data/
+      - ../sql/tables.sql:/docker-entrypoint-initdb.d/tables.sql

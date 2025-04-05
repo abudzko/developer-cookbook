@@ -1,0 +1,26 @@
+Benchmark                                          (date)  Mode  Cnt  Score   Error  Units
+ExceptionBenchmark.ex                 2000-01-02T14:30:55  avgt    4  0.785 ± 0.081  us/op
+ExceptionBenchmark.ex       2000-01-02T14:30:55.010+05:00  avgt    4  3.549 ± 0.210  us/op
+ExceptionBenchmark.pattern            2000-01-02T14:30:55  avgt    4  0.908 ± 0.035  us/op
+ExceptionBenchmark.pattern  2000-01-02T14:30:55.010+05:00  avgt    4  1.835 ± 0.161  us/op
+
+
+Benchmark                                          (date)   Mode  Cnt     Score    Error   Units
+ExceptionBenchmark.ex                 2000-01-02T14:30:55  thrpt    4  1306.175 ± 51.841  ops/ms
+ExceptionBenchmark.ex       2000-01-02T14:30:55.010+05:00  thrpt    4   214.641 ± 13.301  ops/ms
+ExceptionBenchmark.pattern            2000-01-02T14:30:55  thrpt    4  1090.598 ± 78.315  ops/ms
+ExceptionBenchmark.pattern  2000-01-02T14:30:55.010+05:00  thrpt    4   548.665 ± 84.299  ops/ms
+
+
+Benchmark                                          (date)   Mode  Cnt     Score    Error   Units
+ExceptionBenchmark.ex                 2000-01-02T14:30:55  thrpt    4  1284.681 ± 34.618  ops/ms
+ExceptionBenchmark.ex       2000-01-02T14:30:55.010+05:00  thrpt    4   283.794 ± 56.296  ops/ms
+ExceptionBenchmark.pattern            2000-01-02T14:30:55  thrpt    4  1080.625 ± 67.246  ops/ms
+ExceptionBenchmark.pattern  2000-01-02T14:30:55.010+05:00  thrpt    4   540.847 ± 32.163  ops/ms
+
+
+Benchmark                                          (date)  Mode  Cnt  Score    Error  Units
+ExceptionBenchmark.ex                 2000-01-02T14:30:55  avgt    4  0.001 ±  0.001  ms/op
+ExceptionBenchmark.ex       2000-01-02T14:30:55.010+05:00  avgt    4  0.004 ±  0.001  ms/op
+ExceptionBenchmark.pattern            2000-01-02T14:30:55  avgt    4  0.001 ±  0.001  ms/op
+ExceptionBenchmark.pattern  2000-01-02T14:30:55.010+05:00  avgt    4  0.002 ±  0.001  ms/op

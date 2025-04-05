@@ -1,0 +1,5 @@
+sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
+docker-compose -f gitlab-compose.yml run --rm gitlab-runner register
+
+admin -
+user - 525ea25a

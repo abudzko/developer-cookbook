@@ -31,7 +31,7 @@
         <module>kafka-cookbook</module>
         <module>git-cookbook</module>
         <module>redis-cookbook</module>
-        <module>pastgresql-cookbook</module>
+        <module>postgresql-cookbook</module>
         <module>k8s-cookbook</module>
         <module>spring-cookbook/springboot-cookbook/springboot-smallapp-cookbook</module>
         <module>frontend-cookbook</module>
@@ -39,6 +39,7 @@
         <module>etcd-cookbook</module>
         <module>apache-camel-cookbook</module>
         <module>spring-cookbook/springboot-cookbook/springboot-test-cookbook</module>
+        <module>gitlab-cookbook</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -79,39 +80,40 @@
         </dependencies>
     </dependencyManagement>
 
-    <profiles>
-        <profile>
-            <id>toolchain-jdk</id>
-            <activation>
-                <property>
-                    <name>jdk</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-toolchains-plugin</artifactId>
-                        <version>3.0.0</version>
-                        <configuration>
-                            <toolchains>
-                                <jdk>
-                                    <version>${jdk}</version>
-                                </jdk>
-                            </toolchains>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>toolchain</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>toolchain-jdk</id>-->
+<!--            <activation>-->
+<!--                <property>-->
+<!--                    <name>jdk</name>-->
+<!--                </property>-->
+<!--            </activation>-->
+<!--            <build>-->
+<!--                <plugins>-->
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-toolchains-plugin</artifactId>-->
+<!--                        <version>3.0.0</version>-->
+<!--                        <configuration>-->
+<!--                            <toolchains>-->
+<!--                                <jdk>-->
+<!--                                    <version>${jdk}</version>-->
+<!--                                </jdk>-->
+<!--                            </toolchains>-->
+<!--                        </configuration>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <goals>-->
+<!--                                    <goal>toolchain</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
+<!--                </plugins>-->
+<!--            </build>-->
+<!--        </profile>-->
+<!--    </profiles>-->
 
     <build>
         <pluginManagement>

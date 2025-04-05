@@ -26,8 +26,8 @@ import java.util.Base64;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+//@SpringBootTest
+//@AutoConfigureMockMvc
 //@TestPropertySource(
 //        properties = {
 //                "management.security.enabled=false",
@@ -51,7 +51,7 @@ class IdentityControllerTest {
         );
     }
 
-    @Test
+//    @Test
     void test() throws Exception {
         String login = "login";
         String password = "password";

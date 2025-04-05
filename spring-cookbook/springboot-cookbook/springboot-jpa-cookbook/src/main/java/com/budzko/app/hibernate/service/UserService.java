@@ -13,7 +13,7 @@ public class UserService {
 
     @PostConstruct
     void doWork(){
-        createUser();
+//        createUser();
     }
     public void createUser() {
         UserEntity user = new UserEntity();

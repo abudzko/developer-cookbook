@@ -11,6 +11,8 @@ import java.util.List;
 public interface EventMapper {
     WriteEventEntity convert(EventDto eventDto);
 
+    EventDto map(EventDto eventDto);
+
     EventDto convert(ReadEventEntity eventEntity);
 
     List<EventDto> convert(List<ReadEventEntity> eventEntities);

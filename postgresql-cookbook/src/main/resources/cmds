@@ -26,3 +26,6 @@ sudo apt-get install postgresql-client
 
 SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 SHOW TRANSACTION ISOLATION LEVEL
+
+select pg_size_pretty(pg_total_relation_size('logs'));
+select pg_size_pretty(pg_total_relation_size('create_time_logs_idx'));

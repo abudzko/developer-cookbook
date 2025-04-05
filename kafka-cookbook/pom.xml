@@ -2,36 +2,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>developer-cookbook</artifactId>
-        <groupId>com.budzko</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+
+    <groupId>com.budzko</groupId>
+    <version>1.0-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>kafka-cookbook</artifactId>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <spring.boot.version>2.7.3</spring.boot.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-dependencies</artifactId>-->
+<!--                <version>${spring.boot.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -42,6 +41,8 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <version>1.18.28</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

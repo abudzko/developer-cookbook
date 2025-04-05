@@ -14,29 +14,29 @@ import org.openjdk.jmh.infra.Blackhole;
 
 import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Fork(value = 2)
-@Warmup(iterations = 2, timeUnit = TimeUnit.SECONDS, time = 2)
-@Measurement(iterations = 2, timeUnit = TimeUnit.SECONDS, time = 2)
-public class TestBenchmark {
-
-    @State(Scope.Thread)
-    public static class TestState {
-        @Param({"1000", "10000"})
-        private int i;
-    }
-
-    @Benchmark
-    public void recursion(Blackhole blackhole, TestState testState) {
-        blackhole.consume(testMethod(testState.i));
-    }
-
-    private int testMethod(int i) {
-        if (i == 0) {
-            return i;
-        } else {
-            return testMethod(i - 1) + i;
-        }
-    }
-}
+//@BenchmarkMode(Mode.AverageTime)
+//@OutputTimeUnit(TimeUnit.MILLISECONDS)
+//@Fork(value = 2)
+//@Warmup(iterations = 2, timeUnit = TimeUnit.SECONDS, time = 2)
+//@Measurement(iterations = 2, timeUnit = TimeUnit.SECONDS, time = 2)
+//public class TestBenchmark {
+//
+//    @State(Scope.Thread)
+//    public static class TestState {
+//        @Param({"1000", "10000"})
+//        private int i;
+//    }
+//
+//    @Benchmark
+//    public void recursion(Blackhole blackhole, TestState testState) {
+//        blackhole.consume(testMethod(testState.i));
+//    }
+//
+//    private int testMethod(int i) {
+//        if (i == 0) {
+//            return i;
+//        } else {
+//            return testMethod(i - 1) + i;
+//        }
+//    }
+//}

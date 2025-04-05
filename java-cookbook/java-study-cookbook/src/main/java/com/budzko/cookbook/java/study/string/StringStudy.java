@@ -16,23 +16,23 @@ import java.util.regex.Pattern;
 public class StringStudy {
 
     public static void main(String[] args) throws IOException {
-//        inefficientConcatenationInLoop();
-//        printFormattedStringInLoop();
+        inefficientConcatenationInLoop();
+        printFormattedStringInLoop();
         patternAppendReplacement();
         System.out.println(System.class.getSimpleName());
 
         var a = "";
 
         HashSet<String> strings = new HashSet<>();
-//        strings.add("2");
-//        strings.add("1");
-//        strings.add("0");
-//        strings.forEach(new Consumer<String>() {
-//            @Override
-//            public void accept(String s) {
-//                System.out.println(s);
-//            }
-//        });
+        strings.add("2");
+        strings.add("1");
+        strings.add("0");
+        strings.forEach(new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        });
     }
 
     private static void patternAppendReplacement() {
